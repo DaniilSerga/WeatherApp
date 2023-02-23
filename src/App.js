@@ -21,7 +21,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header isLoading={weather.loading} value={weather.value}/>
+            <Header isLoading={weather.isLoading} value={weather.value}/>
             <div className='videoContainer'>
                 <video id='backgroundVideo' tabIndex='-1' autoPlay loop muted>
                     <source src={video} type='video/mp4'/>
