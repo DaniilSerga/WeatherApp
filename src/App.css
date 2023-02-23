@@ -15,3 +15,16 @@
   width: 100%;
   overflow: hidden;
 }
+
+.leftSide {
+  width: 80%;
+  float: left;
+}
+
+.rightSide {
+  width: 20%;
+  height: 100%;
+  float: right;
+  background-color: black;
+  opacity: 0.5;
+}

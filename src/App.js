@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import video from './assets/videos/whiteClouds.mp4'
+import video from './assets/videos/rain.mp4'
+import ForecastList from './components/ForecastList';
 import Header from './components/Header';
-import getWeather from './services/openWeather';
+import service from './services/openWeather';
 
 function App() {
     const [weather, setWeather] = useState({
@@ -13,7 +14,7 @@ function App() {
     useEffect(() => {
         if (weather) {
             setWeather({isLoading: true});
-            getWeather().then(res => {
+            service.getCurrentWeather().then(res => {
                 setWeather({isLoading: false, value: res});
             });
         }
@@ -21,11 +22,18 @@ function App() {
 
     return (
         <div className="App">
-            <Header isLoading={weather.isLoading} value={weather.value}/>
             <div className='videoContainer'>
                 <video id='backgroundVideo' tabIndex='-1' autoPlay loop muted>
                     <source src={video} type='video/mp4'/>
                 </video>
+            </div>
+            
+            <div className='leftSide'>
+                <Header isLoading={weather.isLoading} value={weather.value}/>
+                <ForecastList/>
+            </div>
+            <div className='rightSide'>
+
             </div>
         </div>
     );
