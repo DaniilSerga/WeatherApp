@@ -5,22 +5,23 @@ import Header from './components/Header';
 import getWeather from './services/openWeather';
 
 function App() {
-    const [weather, setWeather] = useState('kzkzkz');
+    const [weather, setWeather] = useState({
+        isLoading: false,
+        value: null
+    });
 
     useEffect(() => {
         if (weather) {
-            getWeather(setWeather);
+            setWeather({isLoading: true});
+            getWeather().then(res => {
+                setWeather({loading: false, value: res});
+            });
         }
     }, []);
-    
+
     return (
         <div className="App">
-            {
-                weather ? <Header value={weather}/> : <h1>Загрузка</h1>
-                // weather !== undefined ? 
-                // <p>{weather.main.humidity}</p> : 
-                // <p>Loading...</p>
-            }
+            <Header isLoading={weather.loading} value={weather.value}/>
             <div className='videoContainer'>
                 <video id='backgroundVideo' tabIndex='-1' autoPlay loop muted>
                     <source src={video} type='video/mp4'/>

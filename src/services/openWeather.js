@@ -1,19 +1,10 @@
-const getWeather = async (setWeather) => {
+const getWeather = async () => {
     const coords = await getCoords();
-
-    console.log('\nКООРДИНАТЫ');
-    console.log(coords);
-
-    const res = await fetchData(coords);
-
-    console.log('\nFETCH');
-    console.log(res);
-
-    setWeather(res);
+    return await fetchData(coords);
 }
 
 const fetchData = async (coords) => {
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=80a54215314d69a082d889832eda2351`)
+    return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=80a54215314d69a082d889832eda2351`)
         .then(response => {
             return response.json();
         }).then(data => {

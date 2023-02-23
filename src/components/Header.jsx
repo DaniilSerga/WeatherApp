@@ -1,14 +1,17 @@
 import React from "react";
 
-const Header = ({temperatureFarenheit}) => {
-    console.log('\nГОРОД')
-    console.log(temperatureFarenheit);
-    return(
-        <div>
-            {/* <h1>{Math.round((temperatureFarenheit - 32) * 5 - 9)}</h1> */}
-            <h1>{temperatureFarenheit}</h1>
-        </div>
-    );
+const Header = ({isLoading, ...props}) => {
+    if (!isLoading && props.value) {
+        return (
+            <h1>{props.value.main.temp}</h1>
+        )
+    }
+
+    return (
+        <p style={{ textAlign: 'center', fontSize: '30px' }}>
+            Hold on, fetching data may take some time :)
+        </p>
+    )
 }
 
 export default Header;
