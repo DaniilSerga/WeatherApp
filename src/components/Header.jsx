@@ -3,7 +3,7 @@ import React from "react";
 const Header = ({isLoading, ...props}) => {
     if (!isLoading && props.value) {
         return (
-            <h1>{props.value.main.temp}</h1>
+            <h1>{Math.round(props.value.main.temp)}</h1>
         )
     }
 

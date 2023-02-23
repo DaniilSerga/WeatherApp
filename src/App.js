@@ -7,14 +7,14 @@ import getWeather from './services/openWeather';
 function App() {
     const [weather, setWeather] = useState({
         isLoading: false,
-        value: null
+        value: null,
     });
 
     useEffect(() => {
         if (weather) {
             setWeather({isLoading: true});
             getWeather().then(res => {
-                setWeather({loading: false, value: res});
+                setWeather({isLoading: false, value: res});
             });
         }
     }, []);
