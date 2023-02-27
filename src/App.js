@@ -11,6 +11,11 @@ function App() {
         value: null,
     });
 
+    const [forecast, setForecast] = useState({
+        isLoading: false,
+        data: [{}],
+    });
+    
     useEffect(() => {
         if (weather) {
             setWeather({isLoading: true});
@@ -20,6 +25,20 @@ function App() {
         }
     }, []);
 
+    useEffect(() => {
+        if (forecast) {
+            setForecast({isLoading: true});
+            service.getForecast().then(res => {
+                // console.log(res);
+
+                setForecast({
+                    isLoading: false,
+                    data: [...res],
+                });
+            });
+        }
+    }, []);
+    
     return (
         <div className="App">
             <div className='videoContainer'>
@@ -30,7 +49,7 @@ function App() {
             
             <div className='leftSide'>
                 <Header isLoading={weather.isLoading} value={weather.value}/>
-                <ForecastList/>
+                <ForecastList data={forecast.data}/>
             </div>
             <div className='rightSide'>
 

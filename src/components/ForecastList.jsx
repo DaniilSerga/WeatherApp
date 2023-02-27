@@ -2,33 +2,17 @@ import React, { useState, useEffect } from "react";
 import Forecast from './Forecast';
 import service from '../services/openWeather';
 
-const ForecastList = () => {
-    const [forecast, setForecast] = useState({
-        isLoading: false,
-        data: null,
-    });
-
-    useEffect(() => {
-        if (forecast) {
-            setForecast({isLoading: true});
-            service.getForecast().then(res => {
-                console.log(res);
-                setForecast({
-                    isLoading: false,
-                    data: res,
-                });
-            });
-        }
-    }, []);
-
+const ForecastList = ({data}) => {
     return(
         <div>
             <ul>
-                {/* {forecast.map(weather => 
+                {
+                !data ? <h2>Загрузка...</h2> :
+                 data.map((weather) => 
                     <li>
-                        <p>{weather.name}</p>
+                        <p>{weather.date}</p>
                     </li>
-                )} */}
+                )}
             </ul>
         </div>
     );

@@ -19,15 +19,21 @@ const fetchCurrentWeather = async (coords) => {
 }
 
 const fetchForecast = async (coords) => {
-    return fetch(`https://api.openweathermap.org/data/2.5/forecast/daily?lat=${coords.lat}&lon=${coords.lon}&cnt=5&appid=80a54215314d69a082d889832eda2351`)
-        .then(response => {
-            console.log('\nRESPONSE');
+    return fetch(`https://api.gismeteo.net/v2/weather/forecast/aggregate/?latitude=${coords.lat}&longitude=${coords.lon}&days=3&lang=en`, {
+        headers: {
+            'X-Gismeteo-Token': '56b30cb255.3443075'
+        },
+        'mode': 'cors',
+    })
+        .then(response => { 
             console.log(response);
-            return response.json();
-        }).then(data => {
-            console.log('\nDATA');
-            console.log(data);
-            return data;
+            return response.json(); 
+        }).then(response => { 
+            console.log(response);
+            return response; 
+        })
+        .catch(err => {
+            console.error(err);
         });
 }
 
