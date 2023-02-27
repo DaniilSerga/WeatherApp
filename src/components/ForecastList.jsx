@@ -8,8 +8,8 @@ const ForecastList = ({data}) => {
             <ul>
                 {
                 !data ? <h2>Загрузка...</h2> :
-                 data.map((weather) => 
-                    <li>
+                 data.map((weather, index) => 
+                    <li key={index}>
                         <p>{weather.date}</p>
                     </li>
                 )}

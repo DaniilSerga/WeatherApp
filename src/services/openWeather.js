@@ -19,12 +19,7 @@ const fetchCurrentWeather = async (coords) => {
 }
 
 const fetchForecast = async (coords) => {
-    return fetch(`https://api.gismeteo.net/v2/weather/forecast/aggregate/?latitude=${coords.lat}&longitude=${coords.lon}&days=3&lang=en`, {
-        headers: {
-            'X-Gismeteo-Token': '56b30cb255.3443075'
-        },
-        'mode': 'cors',
-    })
+    return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&daily=temperature_2m_max&timezone=GMT&current_weather=true&start_date=2023-02-27&end_date=2023-03-04&timeformat=unixtime`)
         .then(response => { 
             console.log(response);
             return response.json(); 
