@@ -1,8 +1,53 @@
+.header {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 
+    align-items: center;
+}
+
+.cityName {
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 37px;
+    padding: 25px 0 0 0;
+}
+
+.extremeTempSection {
+    display: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.extremeTemp {
+    font-weight: 500;
+    font-size: 21px;
+    color: #FFFFFF;
+}
+
+.extremeTemp:after {
+    content: '°';
+    padding: 0;
+    margin: 0;
+}
 
 .temperature {
     color: #FFFFFF; 
     text-align: center;
     font-weight: normal;
     font-size: 102px;
+}
+
+.temperature:after {
+    content: '°';
+    padding: 0;
+    margin: 0;
+}
+
+.description {
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #FFFFFF;
 }

@@ -13,7 +13,7 @@ function App() {
 
     const [forecast, setForecast] = useState({
         isLoading: false,
-        data: [{}],
+        data: null,
     });
     
     useEffect(() => {
@@ -33,8 +33,10 @@ function App() {
 
                 setForecast({
                     isLoading: false,
-                    data: [...res],
+                    data: res,
                 });
+
+                console.log(forecast.data);
             });
         }
     }, []);

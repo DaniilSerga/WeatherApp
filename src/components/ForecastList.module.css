@@ -1,0 +1,27 @@
+.forecastListSection {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 90%;
+
+    border-radius: 15px;
+    position: absolute;
+    backdrop-filter: blur(145px);
+
+    padding: 14px 0px;
+}
+
+.forecastListSection > h3 {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-align: center;
+}
+
+.forecastList {
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
