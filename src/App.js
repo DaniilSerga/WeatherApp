@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import video from './assets/videos/rain.mp4'
+import video from './assets/videos/sunny.mp4'
+import CitiesWeather from './components/CitiesWeather';
 import ForecastList from './components/ForecastList';
 import Header from './components/Header';
 import service from './services/openWeather';
@@ -29,14 +30,10 @@ function App() {
         if (forecast) {
             setForecast({isLoading: true});
             service.getForecast().then(res => {
-                // console.log(res);
-
                 setForecast({
                     isLoading: false,
                     data: res,
                 });
-
-                console.log(forecast.data);
             });
         }
     }, []);
@@ -54,7 +51,7 @@ function App() {
                 <ForecastList data={forecast.data}/>
             </div>
             <div className='rightSide'>
-
+                <CitiesWeather/>
             </div>
         </div>
     );

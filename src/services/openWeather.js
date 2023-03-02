@@ -15,25 +15,27 @@ const fetchCurrentWeather = async (coords) => {
             return response.json();
         }).then(data => {
             return data;
+        }).catch(err => {
+            console.log(err);
         });
 }
 
 const fetchForecast = async (coords) => {
     let startDate = new Date();
     let endDate = new Date();
-    endDate.setDate(startDate.getDate() + 10);
+    endDate.setDate(startDate.getDate() + 9);
 
     startDate = startDate.toLocaleDateString().split('.').reverse().join('-');
     endDate = endDate.toLocaleDateString().split('.').reverse().join('-');
+    
     // https://artefacts.ceda.ac.uk/badc_datadocs/surface/code.html
 
-    return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&daily=apparent_temperature_max,apparent_temperature_min,precipitation_probability_mean,weathercode&timezone=GMT&current_weather=true&start_date=${startDate}&end_date=${endDate}&timeformat=unixtime`)
+    return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&daily=apparent_temperature_max,apparent_temperature_min,precipitation_probability_mean,weathercode&timezone=auto&current_weather=true&start_date=${startDate}&end_date=${endDate}`)
         .then(response => { 
             return response.json(); 
         }).then(response => { 
             return response; 
-        })
-        .catch(err => {
+        }).catch(err => {
             console.error(err);
         });
 }
