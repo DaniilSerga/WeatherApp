@@ -4,6 +4,7 @@ import video from './assets/videos/sunny.mp4'
 import CitiesWeather from './components/CitiesWeather';
 import ForecastList from './components/ForecastList';
 import Header from './components/Header';
+import Modal from './components/Modal';
 import service from './services/openWeather';
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
         isLoading: false,
         data: null,
     });
+
+    const [modalActive, setModalActive] = useState();
     
     useEffect(() => {
         if (weather) {
@@ -51,8 +54,10 @@ function App() {
                 <ForecastList data={forecast.data}/>
             </div>
             <div className='rightSide'>
-                <CitiesWeather/>
+                <CitiesWeather setModalActive={setModalActive}/>
             </div>
+
+            <Modal modalActive={modalActive}/>
         </div>
     );
 }
