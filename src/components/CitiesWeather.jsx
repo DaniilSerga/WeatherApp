@@ -1,10 +1,14 @@
 import React from "react";
 import classes from './CitiesWeather.module.css';
 
-const CitiesWeather = ({...props}) => {
+const CitiesWeather = ({setModalActive}) => {
+    const showModal = () => {
+        setModalActive(true);
+    }
+
     return(
         <div className={classes.citiesWeather}>
-            <button className={classes.searchBar} onClick={props.setModalActive(true)}>
+            <button className={classes.searchBar} onClick={() => showModal()}>
                 <p>Search a city or airport</p>
             </button>
         </div>

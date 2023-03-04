@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import video from './assets/videos/sunny.mp4'
+import video from './assets/videos/rain.mp4'
 import CitiesWeather from './components/CitiesWeather';
 import ForecastList from './components/ForecastList';
 import Header from './components/Header';
@@ -18,7 +18,7 @@ function App() {
         data: null,
     });
 
-    const [modalActive, setModalActive] = useState();
+    const [modalActive, setModalActive] = useState(false);
     
     useEffect(() => {
         if (weather) {
@@ -57,7 +57,7 @@ function App() {
                 <CitiesWeather setModalActive={setModalActive}/>
             </div>
 
-            <Modal modalActive={modalActive}/>
+            {modalActive && <Modal modalActive={modalActive} setModalActive={setModalActive}/>}
         </div>
     );
 }
