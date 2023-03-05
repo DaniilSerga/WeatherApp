@@ -44,9 +44,9 @@ function App() {
     return (
         <div className="App">
             <div className='videoContainer'>
-                <video id='backgroundVideo' tabIndex='-1' autoPlay loop muted>
+                {/* <video id='backgroundVideo' tabIndex='-1' autoPlay loop muted>
                     <source src={video} type='video/mp4'/>
-                </video>
+                </video> */}
             </div>
             
             <div className='leftSide'>

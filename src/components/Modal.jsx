@@ -24,15 +24,17 @@ const Modal = ({modalActive, setModalActive}) => {
 
                     <div className={classes.formContainer}>
                         <ul>
-                            <li>
-                                <h3>Minsk</h3>
-                                <p>Belarus</p>
+                            <li className={classes.checked}>
+                                <div className={classes.dataContainer}>
+                                    <h3>Minsk</h3>
+                                    <p>Belarus</p>
+                                </div>
                                 <hr></hr>
                             </li>
                             <li>
                                 <h3>Washington</h3>
                                 <p>USA</p>
-                                <hr></hr>
+                                <hr/>
                             </li>
                             <li>
                                 <h3>Paris</h3>
