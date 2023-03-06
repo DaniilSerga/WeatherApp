@@ -19,7 +19,7 @@ function App() {
     });
 
     const [modalActive, setModalActive] = useState(false);
-    
+
     useEffect(() => {
         if (weather) {
             setWeather({isLoading: true});
@@ -40,7 +40,7 @@ function App() {
             });
         }
     }, []);
-    
+
     return (
         <div className="App">
             <div className='videoContainer'>
@@ -57,7 +57,7 @@ function App() {
                 <CitiesWeather setModalActive={setModalActive}/>
             </div>
 
-            {modalActive && <Modal modalActive={modalActive} setModalActive={setModalActive}/>}
+            {modalActive && <Modal setModalActive={setModalActive}/>}
         </div>
     );
 }

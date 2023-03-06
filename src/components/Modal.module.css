@@ -13,7 +13,7 @@
 
 .modalWindow {
     position: absolute;
-    height: 289px;
+    height: auto;
     width: 621px;
     top: 50%;
     left: 50%;
@@ -87,9 +87,8 @@
     background-color: transparent;
     width: 100%;
     margin-left: 11px;
-    color: #000000;
+    color: rgba(0, 0, 0, 0.6);
     letter-spacing: -0.32px;
-    opacity: 60%;
 }
 
 .modalHeader > input:focus {
@@ -104,6 +103,8 @@
 
 .formContainer {
     padding: 0;
+    max-height: 289px;
+    overflow: auto;
 }
 
 .formContainer > ul {
@@ -111,23 +112,22 @@
 }
 
 .formContainer > ul > li {
-    padding: 8px 10px;
+    padding: 8px 16px;
     position: relative;
 }
 
-.checked:not(hr) {
-    display: flex;
-    flex-direction: row;
-}
 
 .dataContainer {
     width: 100%;
 }
 
-.dataContainer::after {
+.checked > .dataContainer::after {
     position: absolute;
     top: 0;
     right: 0;
+    margin: 24px 16px;
+    height: 24px;
+    width: 24px;
     content: url("../assets/icons/checkMark.png");
 } 
 
@@ -136,13 +136,19 @@
     transition: 0.3ms;
 }
 
-.formContainer > ul > li > hr {
+.formContainer > p {
+    margin: 10px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+li > hr {
     margin-top: 8px;
     height: 0px;
     border: 1px solid rgba(84, 84, 88, 0.65);
 }
 
-.formContainer > ul > li > p {
+.dataContainer > p {
     /* color: #3C3C43; */
     color: rgba(60, 60, 67, 0.6);
 }
