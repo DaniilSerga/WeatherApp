@@ -5,10 +5,10 @@ import loupeImg from '../assets/icons/loupe.png';
 import ModalCityWeather from "./ModalCityWeather";
 import service from '../services/openWeather';
 
-const Modal = ({modalActive, setModalActive}) => {
+const Modal = ({setModalActive}) => {
     const [cities, setCities] = useState({
         isLoading: false,
-        data: null,
+        data: [],
     });
     
     const checkCity = (event) => {
@@ -31,13 +31,15 @@ const Modal = ({modalActive, setModalActive}) => {
     }
     
     const fetchData = (event) => {
-        if (!event.target.value) {
+        if (!event.target.value.trim()) {
+            setCities({ data: [] })
             return;
         }
 
         setCities({isLoading: true});
         service.getCitiesNames(event.target.value)
             .then(res => {
+                console.log(res);
                 setCities({
                     isLoading: false,
                     data: res,
@@ -60,17 +62,23 @@ const Modal = ({modalActive, setModalActive}) => {
                     </div>
 
                     <div className={classes.formContainer}>
-                            { cities.data ? 
-                                <>
+                        {
+                            cities.data ?
+                            <>
+                                {
+                                    cities.data.length === 0 ?
+                                    <p>Nothing was found</p> :
                                     <ul onClick={(event) => checkCity(event)}>
-                                        { cities.data.map(city => {
-                                                return <ModalCityWeather city={city} classes={classes}/>
+                                        {
+                                            cities.data.map((city, index) => {
+                                                return <ModalCityWeather key={index} city={city} classes={classes}/>
                                             })
                                         }
                                     </ul>
-                                </>
-                                : <p>Loading...</p>
-                            }
+                                }
+                            </> 
+                            : <p>Loading...</p>
+                        }
                     </div>
                 </div>
                 <div className={classes.submitContainer}>

@@ -3,14 +3,14 @@ const service = {
         const coords = await getCoords();
         return await fetchCurrentWeather(coords);
     },
-    getCurrentWeatherByCityName: async () => {
+    getCurrentWeatherByCityName: async (cityName) => {
 
     },
     getForecast: async() => {
         const coords = await getCoords();
         return await fetchForecast(coords);
     },
-    getForecastByCityName: async() => {
+    getForecastByCityName: async(cityName) => {
 
     },
     getCitiesNames: async(input) => {
@@ -51,16 +51,16 @@ const fetchForecast = async (coords) => {
 
 const fetchCitiesNames = async (input) => {
     return fetch(`https://api.api-ninjas.com/v1/city?limit=10&name=${input}`, {
-        method: 'GET',
-        headers: { 'X-Api-Key': 'sEY/3zM66zEZTLgzaCMk/w==WJvuy3eM5CRB7uqh'},
-        contentType: 'application/json',})
-        .then(response => {
+            method: 'GET',
+            headers: { 'X-Api-Key': 'sEY/3zM66zEZTLgzaCMk/w==WJvuy3eM5CRB7uqh'},
+            contentType: 'application/json',
+        }).then(response => {
             return response.json();
         }).then(response => {
             return response;
         }).catch(err => {
             console.error(err);
-        })
+        });
 }
 
 const getCoords = async () => {
