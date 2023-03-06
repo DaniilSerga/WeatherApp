@@ -27,7 +27,7 @@ const ForecastList = ({data}) => {
             <h3>10-day forecast</h3>
             <ul>
                 {
-                    forecasts.map((weather) => <Forecast weather={weather}/>)
+                    forecasts.map((weather, index) => <Forecast key={index} weather={weather}/>)
                 }
             </ul>
         </div>

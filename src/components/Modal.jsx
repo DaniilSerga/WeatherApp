@@ -30,21 +30,25 @@ const Modal = ({setModalActive}) => {
         }
     }
     
+    // fix frequent requests
     const fetchData = (event) => {
         if (!event.target.value.trim()) {
             setCities({ data: [] })
             return;
         }
 
-        setCities({isLoading: true});
-        service.getCitiesNames(event.target.value)
-            .then(res => {
-                console.log(res);
-                setCities({
-                    isLoading: false,
-                    data: res,
+        clearTimeout(timeoutId);
+        let timeoutId = setTimeout(() => {
+            setCities({isLoading: true});
+            service.getCitiesNames(event.target.value)
+                .then(res => {
+                    console.log(res);
+                    setCities({
+                        isLoading: false,
+                        data: res,
+                    });
                 });
-            });
+        }, 1000);
     }
 
     return (
