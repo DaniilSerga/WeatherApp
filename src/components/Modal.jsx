@@ -31,9 +31,6 @@ const Modal = ({setModalActive}) => {
     }
     
     const fetchData = (event) => {
-        console.log(event.target.value);
-        console.log(event.target.value.length);
-
         if (!event.target.value.trim()) {
             setCities({ data: [] })
             return;
