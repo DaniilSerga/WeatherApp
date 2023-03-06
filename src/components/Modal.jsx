@@ -30,25 +30,27 @@ const Modal = ({setModalActive}) => {
         }
     }
     
-    // fix frequent requests
     const fetchData = (event) => {
+        console.log(event.target.value);
+        console.log(event.target.value.length);
+
         if (!event.target.value.trim()) {
             setCities({ data: [] })
             return;
         }
 
-        clearTimeout(timeoutId);
-        let timeoutId = setTimeout(() => {
-            setCities({isLoading: true});
+        setCities({isLoading: true});
+        const timeoutId = setTimeout(() => {
             service.getCitiesNames(event.target.value)
                 .then(res => {
-                    console.log(res);
                     setCities({
                         isLoading: false,
                         data: res,
                     });
                 });
         }, 1000);
+    
+        clearTimeout(timeoutId - 1);
     }
 
     return (

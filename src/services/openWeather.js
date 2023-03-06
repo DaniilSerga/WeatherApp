@@ -14,6 +14,10 @@ const service = {
 
     },
     getCitiesNames: async(input) => {
+        if (!input) {
+            return [];
+        }
+
         return await fetchCitiesNames(input);
     }
 }
@@ -50,16 +54,25 @@ const fetchForecast = async (coords) => {
 }
 
 const fetchCitiesNames = async (input) => {
+    if (!input) {
+        return [];
+    }
+
     return fetch(`https://api.api-ninjas.com/v1/city?limit=10&name=${input}`, {
             method: 'GET',
             headers: { 'X-Api-Key': 'sEY/3zM66zEZTLgzaCMk/w==WJvuy3eM5CRB7uqh'},
             contentType: 'application/json',
         }).then(response => {
+            if (response.status === 400) {
+                throw new Error(`Failder to fetch. Provided prop: '${input}'`)
+            }
+
             return response.json();
         }).then(response => {
             return response;
         }).catch(err => {
             console.error(err);
+            return err;
         });
 }
 
