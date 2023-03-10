@@ -11,6 +11,16 @@ const Forecast = ({weather}) => {
     return(
         <>
             <li className={classes.forecast}>
+                { weather.weatherIcon.description.includes('Rainy')  
+                  ? <div className={classes.iconContainer}>
+                        <img className={classes.weatherIcon} src={weather.weatherIcon.icon} alt='weather icon'></img>
+                        <p className={classes.humidityProbability}>
+                            {weather.precipitation}%
+                        </p>
+                    </div>
+                  : <img className={classes.weatherIcon} src={weather.weatherIcon.icon} alt='weather icon'></img>
+                }
+
                 <p>
                     max:{Math.round(weather.maxTemp)}
                     min:{Math.round(weather.minTemp)} 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import video from './assets/videos/rain.mp4'
+import Background from './components/Background';
 import CitiesWeather from './components/CitiesWeather';
 import ForecastList from './components/ForecastList';
 import Header from './components/Header';
@@ -44,9 +44,7 @@ function App() {
     return (
         <div className="App">
             <div className='videoContainer'>
-                {/* <video id='backgroundVideo' tabIndex='-1' autoPlay loop muted>
-                    <source src={video} type='video/mp4'/>
-                </video> */}
+                <Background isLoading={weather.isLoading} data={weather.value}/>
             </div>
             
             <div className='leftSide'>

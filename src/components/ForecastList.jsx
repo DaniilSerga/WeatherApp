@@ -19,6 +19,7 @@ const ForecastList = ({data}) => {
             precipitation: data.daily.precipitation_probability_mean[i],
             time: new Date(data.daily.time[i]),
             weatherCode: data.daily.weathercode[i],
+            weatherIcon: data.daily.weatherIcons[i],
         });
     }
 

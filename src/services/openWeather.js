@@ -47,6 +47,11 @@ const fetchForecast = async (coords) => {
         .then(response => { 
             return response.json(); 
         }).then(response => { 
+            const weatherCodes = response.daily.weathercode;
+            response.daily.weatherIcons = weatherCodes.map(weatherCode => {
+                return getWeatherIcon(weatherCode);
+            });
+
             return response; 
         }).catch(err => {
             console.error(err);
@@ -85,6 +90,86 @@ const getCoords = async () => {
             });
         }, reject);
     });
+}
+
+const getWeatherIcon = (wmoCode) => {
+    switch (wmoCode) {
+        case 0:
+        case 1:
+            return {
+                description: 'Sunny',
+                icon: "http://openweathermap.org/img/wn/01d@2x.png",
+            };
+
+        case 2:
+            return {
+                description: 'Partly cloudy',
+                icon: "http://openweathermap.org/img/wn/02d@2x.png",
+            };
+
+        case 3:
+            return {
+                description: 'Cloudy',
+                icon: "http://openweathermap.org/img/wn/03d@2x.png",
+            };
+
+        // Foggy
+        case 45:
+        case 48:
+            return {
+                description: 'Foggy',
+                icon: "http://openweathermap.org/img/wn/50d@2x.png",
+            };
+            
+        // Light drizzle
+        case 51:
+        case 53:
+        case 55:
+        case 56:
+        case 57:
+        case 80:
+        case 81:    // heavy showers
+        case 82:    // heavy showers
+            return {
+                description: 'Rainy',
+                icon: "http://openweathermap.org/img/wn/09d@2x.png"
+            };
+
+        // Light rain
+        case 61:
+        case 63:
+        case 65:
+        case 66:
+        case 67:
+            return {
+                description: 'Rainy',
+                icon: "http://openweathermap.org/img/wn/10d@2x.png",
+            };
+
+        // Snow
+        case 71:
+        case 73:
+        case 75:
+        case 77:
+        case 85:
+        case 86:
+            return {
+                description: 'Rainy',
+                icon: "http://openweathermap.org/img/wn/13d@2x.png",
+            };
+
+        // Thunderstorms
+        case 95:
+        case 96:
+        case 99:
+            return {
+                description: 'Rainy',
+                icon: "http://openweathermap.org/img/wn/11d@2x.png"
+            };
+        
+        default:
+            return null;
+    }
 }
 
 export default service;
