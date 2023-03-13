@@ -24,13 +24,15 @@ const ForecastList = ({data}) => {
     }
 
     return(
-        <div className={classes.forecastListSection}>
-            <h3>10-day forecast</h3>
-            <ul>
-                {
-                    forecasts.map((weather, index) => <Forecast key={index} weather={weather}/>)
-                }
-            </ul>
+        <div className={classes.forecastContainer}>
+            <div className={classes.forecastListContainer}>
+                <h3>10-day forecast</h3>
+                <ul>
+                    {
+                        forecasts.map((weather, index) => <Forecast key={index} weather={weather}/>)
+                    }
+                </ul>
+            </div>
         </div>
     );
 }

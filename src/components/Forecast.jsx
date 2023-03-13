@@ -8,9 +8,16 @@ const Forecast = ({weather}) => {
         )
     }
 
+    const days = ["Sun", 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
     return(
         <>
             <li className={classes.forecast}>
+                
+                <p className={classes.dayOfWeek}>
+                    {days[weather.time.getDay()]} 
+                </p>
+
                 { weather.weatherIcon.description.includes('Rainy')  
                   ? <div className={classes.iconContainer}>
                         <img className={classes.weatherIcon} src={weather.weatherIcon.icon} alt='weather icon'></img>
@@ -18,17 +25,25 @@ const Forecast = ({weather}) => {
                             {weather.precipitation}%
                         </p>
                     </div>
-                  : <img className={classes.weatherIcon} src={weather.weatherIcon.icon} alt='weather icon'></img>
+                  : <div className={classes.iconContainer}>
+                        <img className={classes.weatherIcon} src={weather.weatherIcon.icon} alt='weather icon'></img>
+                    </div>
                 }
 
-                <p>
-                    max:{Math.round(weather.maxTemp)}
-                    min:{Math.round(weather.minTemp)} 
-                    precipitation:{weather.precipitation} 
-                    time:{weather.time.toLocaleDateString()} 
-                    code:{weather.weatherCode}
-                </p>
+                <div className={classes.extremeTemp}>
+                    <p className={classes.minTemp}>
+                        {Math.round(weather.minTemp)} 
+                    </p>
+
+                    <hr className={classes.tempIndicator}></hr>
+                    
+                    <p className={classes.maxTemp}>
+                        {Math.round(weather.maxTemp)}
+                    </p>
+                </div>
             </li>
+
+            <hr className={classes.separatingLine}></hr>
         </>
     );
 }

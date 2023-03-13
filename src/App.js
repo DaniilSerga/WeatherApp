@@ -5,6 +5,7 @@ import CitiesWeather from './components/CitiesWeather';
 import ForecastList from './components/ForecastList';
 import Header from './components/Header';
 import Modal from './components/Modal';
+import UvSection from './components/UvSection';
 import service from './services/openWeather';
 
 function App() {
@@ -49,7 +50,12 @@ function App() {
             
             <div className='leftSide'>
                 <Header isLoading={weather.isLoading} value={weather.value}/>
-                <ForecastList data={forecast.data}/>
+                <div className='forecastSection'>
+                    <ForecastList data={forecast.data}/>
+                    <div className='dataSet'>
+                        <UvSection/>
+                    </div>
+                </div>
             </div>
             <div className='rightSide'>
                 <CitiesWeather setModalActive={setModalActive}/>

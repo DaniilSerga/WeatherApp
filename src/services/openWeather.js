@@ -19,6 +19,10 @@ const service = {
         }
 
         return await fetchCitiesNames(input);
+    },
+    getUV: async() => {
+        const coords = await getCoords();
+        return await fetchUV(coords);
     }
 }
 
@@ -33,6 +37,18 @@ const fetchCurrentWeather = async (coords) => {
         });
 }
 
+const fetchUV = async (coords) => {
+    return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,hourly,minutely&appid=e9a837ec3ec3387c7e8c784e48d8f256`)
+        .then(response => {
+            return response.json();
+        }).then(response => {
+            console.log(response);
+            return response;
+        }).catch(err=> {
+            console.error(err);
+        });
+}
+
 const fetchForecast = async (coords) => {
     let startDate = new Date();
     let endDate = new Date();
@@ -41,8 +57,6 @@ const fetchForecast = async (coords) => {
     startDate = startDate.toLocaleDateString().split('.').reverse().join('-');
     endDate = endDate.toLocaleDateString().split('.').reverse().join('-');
     
-    // https://artefacts.ceda.ac.uk/badc_datadocs/surface/code.html
-
     return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&daily=apparent_temperature_max,apparent_temperature_min,precipitation_probability_mean,weathercode&timezone=auto&current_weather=true&start_date=${startDate}&end_date=${endDate}`)
         .then(response => { 
             return response.json(); 

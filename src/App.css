@@ -35,6 +35,11 @@
   float: left;
 }
 
+.forecastSection {
+  display: flex;
+  flex-direction: row;
+}
+
 .rightSide {
   width: 30%;
   height: 100%;
