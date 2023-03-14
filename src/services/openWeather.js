@@ -1,3 +1,5 @@
+import keys from './secrets';
+
 const service = {
     getCurrentWeather: async () => {
         const coords = await getCoords();
@@ -27,7 +29,7 @@ const service = {
 }
 
 const fetchCurrentWeather = async (coords) => {
-    return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=80a54215314d69a082d889832eda2351`)
+    return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&units=metric&appid=${keys.openWeather1}`)
         .then(response => {
             return response.json();
         }).then(data => {
@@ -38,7 +40,7 @@ const fetchCurrentWeather = async (coords) => {
 }
 
 const fetchUV = async (coords) => {
-    return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,hourly,minutely&appid=e9a837ec3ec3387c7e8c784e48d8f256`)
+    return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,hourly,minutely&appid=${keys.openWeather2}`)
         .then(response => {
             return response.json();
         }).then(response => {
@@ -79,7 +81,7 @@ const fetchCitiesNames = async (input) => {
 
     return fetch(`https://api.api-ninjas.com/v1/city?limit=10&name=${input}`, {
             method: 'GET',
-            headers: { 'X-Api-Key': 'sEY/3zM66zEZTLgzaCMk/w==WJvuy3eM5CRB7uqh'},
+            headers: { 'X-Api-Key': keys.ninjas},
             contentType: 'application/json',
         }).then(response => {
             if (response.status === 400) {

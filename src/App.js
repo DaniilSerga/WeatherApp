@@ -28,9 +28,6 @@ function App() {
                 setWeather({isLoading: false, value: res});
             });
         }
-    }, []);
-
-    useEffect(() => {
         if (forecast) {
             setForecast({isLoading: true});
             service.getForecast().then(res => {

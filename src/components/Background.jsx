@@ -12,7 +12,6 @@ const Background = ({isLoading, data}) => {
     ]
 
     if (!isLoading && data) {
-        console.log(data);
         const displayedVideo = VIDEOS.find(video => video.definition === data.weather[0].main.toLowerCase())
         
         return(
