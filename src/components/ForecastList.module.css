@@ -1,5 +1,8 @@
 .forecastContainer {
-    position: inherit;
+    position: relative;
+    min-width: 450px;
+    min-height: 400px;
+    height: 100%;
 }
 
 .forecastListContainer {
@@ -7,7 +10,7 @@
     backdrop-filter: blur(145px);
 
     border-radius: 15px;
-    position: inherit;
+    position: absolute;
 
     display: flex;
     flex-direction: column;
@@ -26,18 +29,18 @@
     text-align: center;
     font-size: 15px;
     padding-bottom: 20px;
-    
 }
 
 .forecastListContainer > ul {
-    position: absolute;
+    overflow: hidden;
     overflow-y: scroll;
     margin-bottom: 5px;
     height: 100%;
+    width: 100%;
 }
 
 .forecastListContainer > ul::-webkit-scrollbar {
-    width: 5px;
+    width: 12px;
 }
 .forecastListContainer > ul::-webkit-scrollbar-track-piece {
     background: transparent;

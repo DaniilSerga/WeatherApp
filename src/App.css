@@ -31,13 +31,22 @@
 }
 
 .leftSide {
+  height: auto;
   width: 70%;
   float: left;
 }
 
 .forecastSection {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 34px;
+}
+
+.dataSet {
+  position: inherit;
+  margin-left: 20px;
 }
 
 .rightSide {
