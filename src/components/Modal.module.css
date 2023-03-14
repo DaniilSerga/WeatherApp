@@ -1,53 +1,50 @@
 .modalContainer {
+    position: absolute;
+    z-index: 1;
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    position: absolute;
-    z-index: 1;
     background: rgba(78, 112, 123, 0.42);
     backdrop-filter: blur(8px);
 }
 
 .modalWindow {
     position: absolute;
-    height: auto;
     width: 621px;
+    height: auto;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     padding: 8px 16px;
+    transform: translate(-50%, -50%);
 }
 
 .modalForm {
+    margin: 0 20px;
     background-color: #FFFFFF;
     border-radius: 16px;
-    margin: 0 20px;
 }
 
 .submitContainer {
-    height: 40px;
-    width: 100%;
     z-index: 2;
+    width: 100%;
+    height: 40px;
+    margin-top: 40px;
     padding-left: 20px;
     padding-right: 20px;
-    margin-top: 40px;
 }
 
 .submitButton {
     width: 100%;
     height: 100%;
-
-    background-color: #ABBFCE;
-
-    border-radius: 31px;
-    border-width: 0;
-
     font-size: 16px;
     color: white;
     cursor: pointer;
+    background-color: #ABBFCE;
+    border-width: 0;
+    border-radius: 31px;
 }
 
 .closeModalContainer {
@@ -56,39 +53,35 @@
 }
 
 .closeModal {
+    position: absolute;
     top: 0;
     right: 0;
     cursor: pointer;
     color: black;
-    position: absolute;
     background: none;
     border: none;
 }
 
 .modalHeader {
-    padding-left: 10px;
-    align-items: center;
-    display: inline-block;
     display: flex;
     flex-direction: row;
-    align-items: center;
-
-    padding: 14px 18px 11px 18px;
     height: 50px;
-
+    padding-left: 10px;
+    align-items: center;
+    padding: 14px 18px 11px 18px;
     background-color: #F3F3F3;
 }
 
 .modalHeader > input {
-    font-size: 17px;
-    line-height: 40px;
     height: 100%;
-    border: none;
-    background-color: transparent;
     width: 100%;
     margin-left: 11px;
     color: rgba(0, 0, 0, 0.6);
     letter-spacing: -0.32px;
+    font-size: 17px;
+    line-height: 40px;
+    border: none;
+    background-color: transparent;
 }
 
 .modalHeader > input:focus {
@@ -96,9 +89,9 @@
 }
 
 .modalHeader > img {
-    margin: 0;
     width: 17px;
     height: 17px;
+    margin: 0;
 }
 
 .formContainer {
@@ -112,8 +105,8 @@
 }
 
 .formContainer > ul > li {
-    padding: 8px 16px;
     position: relative;
+    padding: 8px 16px;
 }
 
 
@@ -123,11 +116,11 @@
 
 .checked > .dataContainer::after {
     position: absolute;
+    height: 24px;
+    width: 24px;
     top: 0;
     right: 0;
     margin: 24px 16px;
-    height: 24px;
-    width: 24px;
     content: url("../assets/icons/checkMark.png");
 } 
 
@@ -143,12 +136,11 @@
 }
 
 li > hr {
-    margin-top: 8px;
     height: 0px;
+    margin-top: 8px;
     border: 1px solid rgba(84, 84, 88, 0.65);
 }
 
 .dataContainer > p {
-    /* color: #3C3C43; */
     color: rgba(60, 60, 67, 0.6);
 }

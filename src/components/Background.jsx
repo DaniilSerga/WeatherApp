@@ -16,7 +16,7 @@ const Background = ({isLoading, data}) => {
         const displayedVideo = VIDEOS.find(video => video.definition === data.weather[0].main.toLowerCase())
         
         return(
-            <video id='backgroundVideo' tabIndex='-1' autoPlay loop muted>
+            <video className='backgroundVideo' tabIndex='-1' autoPlay loop muted>
                 <source src={displayedVideo.video} type='video/mp4'/>
             </video>
         ); 

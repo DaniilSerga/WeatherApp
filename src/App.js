@@ -43,21 +43,21 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
+        <div className='App'>
             <div className='videoContainer'>
                 <Background isLoading={weather.isLoading} data={weather.value}/>
             </div>
             
-            <div className='leftSide'>
+            <div className='infoSection'>
                 <Header isLoading={weather.isLoading} value={weather.value}/>
-                <div className='forecastSection'>
+                <div className='weatherInfo'>
                     <ForecastList data={forecast.data}/>
-                    <div className='dataSet'>
+                    <div className='additionalInfo'>
                         <UvSection/>
                     </div>
                 </div>
             </div>
-            <div className='rightSide'>
+            <div className='citiesSection'>
                 <CitiesWeather setModalActive={setModalActive}/>
             </div>
 

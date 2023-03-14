@@ -15,8 +15,8 @@
 .iconContainer {
     display: flex;
     flex-direction: column;
-    text-align: center;
     margin-left: 10px;
+    text-align: center;
 }
 
 .humidityProbability {
@@ -42,20 +42,18 @@
 
 .tempIndicator {
     display: inline-flex;
-    border-radius: 44px;
-    margin: 0 15px;
     width: 165px;
+    margin: 0 15px;
     border: 0.2px solid #424242;
+    border-radius: 44px;
 }
 
 .extremeTemp {
+    margin-left: auto;
     top: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: 0;
-
-    float: right;
     font-size: 22px;
+    justify-content: right;
     text-align: right;
 }
 
@@ -64,7 +62,7 @@
 }
 
 .extremeTemp > p::after {
-    content: '°';
     margin: 0;
     padding: 0;
+    content: '°';
 }

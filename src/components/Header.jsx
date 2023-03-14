@@ -4,7 +4,7 @@ import classes from './Header.module.css';
 const Header = ({isLoading, value}) => {
     if (!isLoading && value) {
         return (
-            <div className={classes.header}>
+            <header className={classes.headerSection}>
                 <h2 className={classes.cityName}>{value.name}</h2>
                 <h1 className={classes.temperature}>{Math.round(value.main.temp)}</h1>
                 <p className={classes.description}>{value.weather[0].description}</p>
@@ -12,12 +12,12 @@ const Header = ({isLoading, value}) => {
                     <p className={classes.extremeTemp}>H:{Math.round(value.main.temp_max)}</p>
                     <p className={classes.extremeTemp}>L:{Math.round(value.main.temp_min)}</p>
                 </div>
-            </div>
+            </header>
         )
     }
 
     return (
-        <p style={{ textAlign: 'center', fontSize: '30px' }}>
+        <p className={classes.loadingSign}>
             Загрузка...
         </p>
     )
