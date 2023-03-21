@@ -8,19 +8,19 @@ const Forecast = ({weather}) => {
         )
     }
 
-    const days = ["Sun", 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     return(
         <>
             <li className={classes.forecast}>
                 
                 <p className={classes.dayOfWeek}>
-                    {days[weather.time.getDay()]} 
+                    {DAYS[weather.time.getDay()]} 
                 </p>
 
                 { weather.weatherIcon.description.includes('Rainy')  
                   ? <div className={classes.iconContainer}>
-                        <img className={classes.weatherIcon} src={weather.weatherIcon.icon} alt='weather icon'></img>
+                        <img className={classes.weatherIcon} src={weather.weatherIcon.icon} alt='weather icon'/>
                         <p className={classes.humidityProbability}>
                             {weather.precipitation}%
                         </p>

@@ -8,6 +8,10 @@ const service = {
     getCurrentWeatherByCityName: async (cityName) => {
 
     },
+    getAdditionalCurrentWeather: async () => {
+        const coords = await getCoords();
+        return await fetchAdditinalCurrentWeather(coords);
+    },
     getForecast: async() => {
         const coords = await getCoords();
         return await fetchForecast(coords);
@@ -21,10 +25,6 @@ const service = {
         }
 
         return await fetchCitiesNames(input);
-    },
-    getUV: async() => {
-        const coords = await getCoords();
-        return await fetchUV(coords);
     }
 }
 
@@ -39,16 +39,25 @@ const fetchCurrentWeather = async (coords) => {
         });
 }
 
-const fetchUV = async (coords) => {
-    return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,hourly,minutely&appid=${keys.openWeather2}`)
+const fetchAdditinalCurrentWeather = async (coords) => {
+    return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,minutely&appid=${keys.openWeather2}`)
         .then(response => {
             return response.json();
         }).then(response => {
             console.log(response);
+
+            let data = response.hourly;
+
+            response.hourly.forEach(hourlyWeather => {
+                const iconName = hourlyWeather.weather[0].icon;
+                const icon = `http://openweathermap.org/img/wn/${iconName}@2x.png`
+                hourlyWeather.weather[0].icon = icon;
+            })
+
             return response;
-        }).catch(err=> {
+        }).catch(err => {
             console.error(err);
-        });
+        })
 }
 
 const fetchForecast = async (coords) => {
@@ -65,9 +74,15 @@ const fetchForecast = async (coords) => {
         }).then(response => { 
             const weatherCodes = response.daily.weathercode;
             response.daily.weatherIcons = weatherCodes.map(weatherCode => {
+                if (!weatherCode) {
+                    return getWeatherIcon(1);
+                }
+                
                 return getWeatherIcon(weatherCode);
             });
 
+            console.log('FORECAST');
+            console.log(response);
             return response; 
         }).catch(err => {
             console.error(err);
@@ -186,6 +201,10 @@ const getWeatherIcon = (wmoCode) => {
         default:
             return null;
     }
+}
+
+const getIconWithCode = (openWeatherCode) => {
+
 }
 
 export default service;

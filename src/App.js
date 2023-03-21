@@ -5,7 +5,7 @@ import CitiesWeather from './components/CitiesWeather';
 import ForecastList from './components/ForecastList';
 import Header from './components/Header';
 import Modal from './components/Modal';
-import UvSection from './components/UvSection';
+import AdditionalInfo from './components/AdditionalInfo';
 import service from './services/openWeather';
 
 function App() {
@@ -25,8 +25,9 @@ function App() {
         if (weather) {
             setWeather({isLoading: true});
             service.getCurrentWeather().then(res => {
+                console.log(res);
                 setWeather({isLoading: false, value: res});
-            });
+            })
         }
         if (forecast) {
             setForecast({isLoading: true});
@@ -40,17 +41,20 @@ function App() {
     }, []);
 
     return (
-        <div className='App'>
+        <div className='app'>
             <div className='videoContainer'>
                 <Background isLoading={weather.isLoading} data={weather.value}/>
             </div>
             
-            <div className='infoSection'>
+            <div className='header'>
                 <Header isLoading={weather.isLoading} value={weather.value}/>
+            </div>
+            
+            <div className='infoSection'>
                 <div className='weatherInfo'>
                     <ForecastList data={forecast.data}/>
                     <div className='additionalInfo'>
-                        <UvSection/>
+                        <AdditionalInfo/>
                     </div>
                 </div>
             </div>

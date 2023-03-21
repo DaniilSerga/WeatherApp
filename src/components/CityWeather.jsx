@@ -1,6 +1,6 @@
 import React from "react";
 
-const cityWeather = ({weather}) => {
+const CityWeather = ({weather}) => {
     return (
         <>
 
@@ -8,4 +8,4 @@ const cityWeather = ({weather}) => {
     )
 }
 
-export default cityWeather;
+export default CityWeather;

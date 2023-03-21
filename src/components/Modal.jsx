@@ -71,10 +71,10 @@ const Modal = ({setModalActive}) => {
                                 {
                                     cities.data.length === 0 ?
                                     <p>Nothing was found</p> :
-                                    <ul onClick={(event) => checkCity(event)}>
+                                    <ul>
                                         {
                                             cities.data.map((city, index) => {
-                                                return <ModalCityWeather key={index} city={city} classes={classes}/>
+                                                return <ModalCityWeather clickEvent={checkCity} key={index} city={city} classes={classes}/>
                                             })
                                         }
                                     </ul>

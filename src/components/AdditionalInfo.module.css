@@ -1,0 +1,21 @@
+.additionalDataContainer {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: auto;
+}
+
+.additionalData {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.additionalData > div {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 15px;
+}
