@@ -1,3 +1,37 @@
-.visibility {
-    background-color: chartreuse;
+.sectionHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.sectionHeader > img {
+    width: 15px;
+    height: 15px;
+}
+
+.sectionHeader > p {
+    margin-left: 8px;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    opacity: 0.3;
+}
+
+.visibilityValue {
+    font-size: 43px;
+    line-height: 52px;
+}
+
+.visibilityValue::after {
+    content: ' km';
+}
+
+.info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 22px;
 }

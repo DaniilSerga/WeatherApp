@@ -1,11 +1,20 @@
 import React from "react";
 import classes from './Wind.module.css';
+import icon from '../assets/icons/wind.png';
+import compass from '../assets/icons/compass.png'
 
-const Wind = () => {
+const Wind = ({data}) => {
     return(
         <>
             <div className={classes.wind}>
-                <p>Wind</p>
+                <div className={classes.sectionHeader}>
+                    <img src={icon} alt='wind speed'></img>
+                    <p>Wind</p>
+                </div>
+                <div className={classes.sectionBody}>
+                    <img src={compass} alt='wind speed'></img>
+                    <p className={classes.windSpeed}>{Math.round(data)} m/s</p>
+                </div>
             </div>
         </>
     )

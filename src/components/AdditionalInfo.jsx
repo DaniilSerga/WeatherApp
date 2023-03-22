@@ -18,10 +18,9 @@ const AdditionalInfo = () => {
     useEffect(() => {
         if (weather) {
             setWeather({isLoading: true});
-            setWeather({isLoading: false, value: 'ура ура ура'});
-            // service.getAdditionalCurrentWeather().then(res => {
-            //     setWeather({isLoading: false, value: res});
-            // });
+            service.getAdditionalCurrentWeather().then(res => {
+                setWeather({isLoading: false, value: res});
+            });
         }
     }, []);
 
@@ -31,18 +30,20 @@ const AdditionalInfo = () => {
         )
     }
 
+    console.log(weather.value);
+
     return(
         <>
             <div className={classes.additionalDataContainer}>
                 <HourlyWeather data={weather.value}/>
 
                 <div className={classes.additionalData}>
-                    <UvIndex/>
-                    <Sunrise/>
-                    <Wind/>
-                    <FeelsLike/>
-                    <Humidity/>
-                    <Visibility/>
+                    <UvIndex data={weather.value.current.uvi}/>
+                    <Sunrise data={weather.value.current.sunrise}/>
+                    <Wind data={weather.value.current.wind_speed}/>
+                    <FeelsLike data={weather.value.current.feels_like}/>
+                    <Humidity data={weather.value.current.humidity}/>
+                    <Visibility data={weather.value.current.visibility}/>
                 </div>
             </div>
         </>

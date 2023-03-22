@@ -1,3 +1,37 @@
-.wind {
-    background-color: green;
+.sectionHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.sectionHeader > img {
+    width: 15px;
+    height: 15px;
+}
+
+.sectionHeader > p {
+    margin-left: 8px;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    opacity: 0.3;
+}
+
+.sectionBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionBody > img {
+    width: 140px;
+    height: 140px;
+}
+
+.windSpeed {
+    position: absolute;
+    width: 100%;
+    font-size: 23px;
+    text-align: center;
 }

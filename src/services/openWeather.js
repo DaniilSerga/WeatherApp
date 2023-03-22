@@ -40,7 +40,7 @@ const fetchCurrentWeather = async (coords) => {
 }
 
 const fetchAdditinalCurrentWeather = async (coords) => {
-    return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,minutely&appid=${keys.openWeather2}`)
+    return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,minutely&units=metric&appid=${keys.openWeather2}`)
         .then(response => {
             return response.json();
         }).then(response => {
