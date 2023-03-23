@@ -1,19 +1,17 @@
 .forecastContainer {
     position: relative;
-    width: 30%;
+    display: block;
+    width: auto;
     height: auto;
     min-width: 400px;
     min-height: 400px;
 }
 
 .forecastListContainer {
-    position: absolute;
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    margin-left: 2%;
-    margin-bottom: 34px;
     padding-top: 14px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(145px);

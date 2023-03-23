@@ -12,8 +12,8 @@
 }
 
 .separator {
-    margin: 8px ;
-    opacity: 0.5;
+    margin: 8px;
+    opacity: 0.1;
     border-color: transparent;
     border-width: 0.2px;
     background: #373C42;
