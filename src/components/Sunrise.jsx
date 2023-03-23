@@ -27,7 +27,7 @@ const Sunrise = ({data}) => {
                     </p>
                     <img src={graph} alt='sunrise graph'></img>
                     <p className={classes.sunriseTime}>
-                        Sunrise: {new Date(data).toLocaleTimeString('en-us', {hour: '2-digit', minute: '2-digit'})}
+                        Sunrise: {new Date(data * 1000).toLocaleTimeString('en-us', {hour: '2-digit', minute: '2-digit'})}
                     </p>
                 </div>
             </div>

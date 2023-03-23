@@ -1,6 +1,57 @@
 .hourlyContainer {
-    width: 628px;
-    height: 200px;
-    background-color: red;
+    padding: 10px 10px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(148px);
+}
 
+.weatherSummary {
+    color: #373C42;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.separator {
+    margin: 8px ;
+    opacity: 0.5;
+    border-color: transparent;
+    border-width: 0.2px;
+    background: #373C42;
+}
+
+.sectionBody {
+    display: flex;
+    flex-direction: row;
+}
+
+.weather {
+    position: relative;
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.weatherTime {
+    color: #373C42;
+    font-size: 17px;
+    text-align: center;
+    align-items: center;
+}
+
+.weatherIcon {
+    width: 35px;
+    height: 35px;
+    margin: 25px auto;
+}
+
+.temperature {
+    color: #373C42;
+    font-size: 22px;
+    letter-spacing: 0.005em;
+    text-align: center;
+}
+
+.temperature::after {
+    content: '°';
 }

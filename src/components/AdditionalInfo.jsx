@@ -24,13 +24,11 @@ const AdditionalInfo = () => {
         }
     }, []);
 
-    if (!weather.value) {
+    if (!weather.value || weather.isLoading) {
         return(
             <p>Loading...</p>
         )
     }
-
-    console.log(weather.value);
 
     return(
         <>

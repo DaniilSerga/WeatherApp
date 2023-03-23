@@ -44,10 +44,6 @@ const fetchAdditinalCurrentWeather = async (coords) => {
         .then(response => {
             return response.json();
         }).then(response => {
-            console.log(response);
-
-            let data = response.hourly;
-
             response.hourly.forEach(hourlyWeather => {
                 const iconName = hourlyWeather.weather[0].icon;
                 const icon = `http://openweathermap.org/img/wn/${iconName}@2x.png`
@@ -81,8 +77,6 @@ const fetchForecast = async (coords) => {
                 return getWeatherIcon(weatherCode);
             });
 
-            console.log('FORECAST');
-            console.log(response);
             return response; 
         }).catch(err => {
             console.error(err);

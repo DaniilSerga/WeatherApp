@@ -25,9 +25,11 @@ function App() {
         if (weather) {
             setWeather({isLoading: true});
             service.getCurrentWeather().then(res => {
-                console.log(res);
-                setWeather({isLoading: false, value: res});
-            })
+                setWeather({
+                    isLoading: false, 
+                    value: res
+                });
+            });
         }
         if (forecast) {
             setForecast({isLoading: true});
