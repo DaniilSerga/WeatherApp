@@ -1,4 +1,6 @@
 .hourlyContainer {
+    display: flex;
+    flex-direction: column;
     padding: 10px 10px;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
@@ -22,6 +24,7 @@
 .sectionBody {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .weather {

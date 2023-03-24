@@ -60,7 +60,8 @@
   position: relative;
   display: flex;
   justify-content: center;
-  width: 65%;
+  flex-shrink: 3;
+  width: auto;
 }
 
 .citiesSection {
