@@ -99,6 +99,7 @@ const fetchCitiesNames = async (input) => {
 
             return response.json();
         }).then(response => {
+            console.log(response);
             return response;
         }).catch(err => {
             console.error(err);

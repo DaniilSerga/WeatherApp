@@ -1,0 +1,76 @@
+.cityWeatherContainer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: 200px;
+    min-height: 200px;
+    /* background: linear-gradient(180deg, #101623 0%, #2A3040 100%);
+    border-radius: 14px; */
+    background: gray;
+    border-radius: 15px;
+    padding: 25px 20px 15px 20px;
+    color: #fff;
+}
+
+.cityInfoSection {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+}
+
+.locationHeader {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.4px;
+}
+
+.locationSubHeader {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 28px;
+    letter-spacing: 0.36px;
+}
+
+.weatherOverview {
+    position: absolute;
+    bottom: 0;
+}
+
+.weatherInfoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    text-align: center;
+}
+
+.weatherInfoSection p::after {
+    content: '°';
+    padding: 0;
+}
+
+.temperature {
+    font-weight: 500;
+    font-size: 110px;
+    line-height: 131px;
+    letter-spacing: 0.41px;
+}
+
+.extremeTemps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.extremeTemps > p {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;
+}

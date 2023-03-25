@@ -14,7 +14,6 @@
 }
 
 .extremeTempSection {
-    display: border-box;
     display: flex;
     flex-direction: row;
     gap: 15px;

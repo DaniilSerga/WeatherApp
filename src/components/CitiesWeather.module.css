@@ -34,3 +34,10 @@
     width: 17px;
     margin-left: 18px;
 }
+
+.citiesSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
