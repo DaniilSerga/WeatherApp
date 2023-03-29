@@ -1,12 +1,9 @@
 .cityWeatherContainer {
     position: relative;
     display: flex;
-    flex-direction: row;
     width: auto;
     height: 200px;
     min-height: 200px;
-    /* background: linear-gradient(180deg, #101623 0%, #2A3040 100%);
-    border-radius: 14px; */
     background: gray;
     border-radius: 15px;
     padding: 25px 20px 15px 20px;
@@ -22,7 +19,6 @@
 }
 
 .locationHeader {
-    font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;

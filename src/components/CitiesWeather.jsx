@@ -3,22 +3,21 @@ import classes from './CitiesWeather.module.css';
 import loupe from '../assets/icons/loupe.png'
 import CityWeather from "./CityWeather";
 
-const CitiesWeather = ({setModalActive}) => {
-    const showModal = () => {
-        setModalActive(true);
-    }
-
+const CitiesWeather = ({setModalActive, citiesWeather}) => {
     return(
         <div className={classes.citiesWeather}>
             <div className={classes.searchSection}>
-                <button className={classes.searchBar} onClick={showModal}>
+                <button className={classes.searchBar} onClick={() => setModalActive(true)}>
                     <img src={loupe} alt="Search cities weather"/>
                     <p>Search a city or airport</p>
                 </button>
             </div>
             <div className={classes.citiesSection}>
                 <CityWeather isCurrentLocation={true} city="Minsk"/>
-                <CityWeather city="Paris"/>
+
+                { citiesWeather && citiesWeather.length > 1 && citiesWeather.map(city => {
+                    return <CityWeather city={city.name}/>
+                })}
             </div>
         </div>
     );

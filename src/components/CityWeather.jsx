@@ -7,16 +7,8 @@ const CityWeather = ({ isCurrentLocation = false, city }) => {
         <>
             <div className={classes.cityWeatherContainer}>
                 <div className={classes.cityInfoSection}>
-                    {isCurrentLocation ?
-                        <>
-                            <h3 className={classes.locationHeader}>My location</h3>
-                            <h4 className={classes.locationSubHeader}>{city}</h4>
-                        </> :
-                        <>
-                            <h3 className={classes.locationHeader}>{city}</h3>
-                            <h4 className={classes.locationSubHeader}>12:28</h4>
-                        </>
-                    }
+                    <h3 className={classes.locationHeader}>{isCurrentLocation ? 'My location' : city}</h3>
+                    <h4 className={classes.locationSubHeader}>{isCurrentLocation ? city : '12:28'}</h4>
 
                     <p className={classes.weatherOverview}>Partly cloudy</p>
                 </div>

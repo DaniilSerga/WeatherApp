@@ -5,28 +5,52 @@ import loupeImg from '../assets/icons/loupe.png';
 import ModalCityWeather from "./ModalCityWeather";
 import service from '../services/openWeather';
 
-const Modal = ({setModalActive}) => {
+const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
     const [cities, setCities] = useState({
         isLoading: false,
         data: [],
     });
     
+    const [chosenCity, setChosenCity] = useState({});
+    const [isSubmitButtonActive, setSubmitButtonActive] = useState(true);
+
+    const submitCity = () => {
+        console.log('CHOSEN CITY');
+        console.log(chosenCity);
+
+        setSelectedCities({
+            data: [selectedCities.data, chosenCity]
+        });
+        
+        console.log('\nSELECTED CITIES DATA');
+        console.log(selectedCities);
+
+        setModalActive(false);
+    }
+
     const checkCity = (event) => {
         if (!event.target.name === 'li') {
             return;
         }
 
-        const liElement = event.target.closest('li');
-
-        switch (liElement.className === classes.checked) {
+        const clickedLi = event.target.closest('li');
+        
+        switch (clickedLi.className.includes('checked')) {
             case true:
-                liElement.className = '';
+                clickedLi.className = '';
+                setSubmitButtonActive(true);
                 break;
             case false:
-                liElement.className = classes.checked;
+                clickedLi.className = classes.checked;
+                setSubmitButtonActive(false);
+
+                const index = Array.prototype.indexOf.call(clickedLi.closest('ul').childNodes, clickedLi);
+
+                setChosenCity(cities.data[index]);
+
                 break;
             default:
-                console.log('some error occured while trying to change li\'s class name');
+                console.log('Some error occured while trying to select a city');
         }
     }
     
@@ -49,6 +73,7 @@ const Modal = ({setModalActive}) => {
     
         clearTimeout(timeoutId - 1);
     }
+
 
     return (
         <div className={classes.modalContainer}>
@@ -85,7 +110,7 @@ const Modal = ({setModalActive}) => {
                     </div>
                 </div>
                 <div className={classes.submitContainer}>
-                    <button className={classes.submitButton}>OK</button>    
+                    <button className={classes.submitButton} onClick={() => submitCity()} disabled={isSubmitButtonActive}>OK</button>    
                 </div>
             </div>
         </div>

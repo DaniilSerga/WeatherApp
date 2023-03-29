@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from './UvIndex.module.css';
 import icon from '../assets/icons/uviIcon.png';
 
 const UvIndex = ({data}) => {
-    let uviExpanation = 'undefined';
-
-    if (data >= 0 && data < 3) {
-        uviExpanation = 'Low';
-    } else if (data >= 3 && data < 6) {
-        uviExpanation = 'Middle';
-    } else if (data >= 6 && data < 8) {
-        uviExpanation = 'High';
-    } else if (data >= 8 && data < 11) {
-        uviExpanation = 'Very high';
-    } else if (data >= 11) {
-        uviExpanation = 'Extreme';
+    const getUviExpanation = (data) => {
+        if (data >= 0 && data < 3) {
+            return 'Low';
+        } else if (data >= 3 && data < 6) {
+            return 'Middle';
+        } else if (data >= 6 && data < 8) {
+            return 'High';
+        } else if (data >= 8 && data < 11) {
+            return 'Very high';
+        } else if (data >= 11) {
+            return 'Extreme';
+        } else {
+            return 'undefined';
+        }
     }
 
     return(
@@ -26,9 +28,9 @@ const UvIndex = ({data}) => {
                 </div>
                 <div className={classes.sectionBody}>
                     <p className={classes.uvi}>{data}</p>
-                    <p className={classes.uviDefinition}> {uviExpanation} </p>
+                    <p className={classes.uviDefinition}> {getUviExpanation(data)} </p>
                     <hr></hr>
-                    <p className={classes.uviForecast}>{uviExpanation} for the rest of the day</p>
+                    <p className={classes.uviForecast}>{getUviExpanation(data)} for the rest of the day</p>
                 </div>
             </div>
         </>

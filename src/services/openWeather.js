@@ -5,8 +5,8 @@ const service = {
         const coords = await getCoords();
         return await fetchCurrentWeather(coords);
     },
-    getCurrentWeatherByCityName: async (cityName) => {
-
+    getCurrentWeatherByCityCoords: async (coords) => {
+        return await fetchCurrentWeather(coords);
     },
     getAdditionalCurrentWeather: async () => {
         const coords = await getCoords();
@@ -99,7 +99,6 @@ const fetchCitiesNames = async (input) => {
 
             return response.json();
         }).then(response => {
-            console.log(response);
             return response;
         }).catch(err => {
             console.error(err);
@@ -119,87 +118,55 @@ const getCoords = async () => {
 }
 
 const getWeatherIcon = (wmoCode) => {
-    switch (wmoCode) {
-        case 0:
-        case 1:
-            return {
-                description: 'Sunny',
-                icon: "http://openweathermap.org/img/wn/01d@2x.png",
-            };
-
-        case 2:
-            return {
-                description: 'Partly cloudy',
-                icon: "http://openweathermap.org/img/wn/02d@2x.png",
-            };
-
-        case 3:
-            return {
-                description: 'Cloudy',
-                icon: "http://openweathermap.org/img/wn/03d@2x.png",
-            };
-
+    if (wmoCode < 2) {
+        return {
+            description: 'Sunny',
+            icon: "http://openweathermap.org/img/wn/01d@2x.png",
+        };
+    } else if (wmoCode === 2) {
+        return {
+            description: 'Partly cloudy',
+            icon: "http://openweathermap.org/img/wn/02d@2x.png",
+        };
+    } else if (wmoCode === 3) {
+        return {
+            description: 'Cloudy',
+            icon: "http://openweathermap.org/img/wn/03d@2x.png",
+        };
+    } else if (wmoCode === 45 || wmoCode === 48) {
         // Foggy
-        case 45:
-        case 48:
-            return {
-                description: 'Foggy',
-                icon: "http://openweathermap.org/img/wn/50d@2x.png",
-            };
-            
+        return {
+            description: 'Foggy',
+            icon: "http://openweathermap.org/img/wn/50d@2x.png",
+        };
+    } else if ((wmoCode > 50 && wmoCode < 58) || (wmoCode >= 80 && wmoCode < 83 )) {
         // Light drizzle
-        case 51:
-        case 53:
-        case 55:
-        case 56:
-        case 57:
-        case 80:
-        case 81:    // heavy showers
-        case 82:    // heavy showers
-            return {
-                description: 'Rainy',
-                icon: "http://openweathermap.org/img/wn/09d@2x.png"
-            };
-
+        // Heavy showers
+        return {
+            description: 'Rainy',
+            icon: "http://openweathermap.org/img/wn/09d@2x.png"
+        };
+    } else if (wmoCode > 60 && wmoCode < 68) {
         // Light rain
-        case 61:
-        case 63:
-        case 65:
-        case 66:
-        case 67:
-            return {
-                description: 'Rainy',
-                icon: "http://openweathermap.org/img/wn/10d@2x.png",
-            };
-
+        return {
+            description: 'Rainy',
+            icon: "http://openweathermap.org/img/wn/10d@2x.png",
+        };
+    } else if ((wmoCode > 70 && wmoCode < 78) || wmoCode === 85 || wmoCode === 86) {
         // Snow
-        case 71:
-        case 73:
-        case 75:
-        case 77:
-        case 85:
-        case 86:
-            return {
-                description: 'Rainy',
-                icon: "http://openweathermap.org/img/wn/13d@2x.png",
-            };
-
+        return {
+            description: 'Rainy',
+            icon: "http://openweathermap.org/img/wn/13d@2x.png",
+        };
+    } else if (wmoCode > 90) {
         // Thunderstorms
-        case 95:
-        case 96:
-        case 99:
-            return {
-                description: 'Rainy',
-                icon: "http://openweathermap.org/img/wn/11d@2x.png"
-            };
-        
-        default:
-            return null;
+        return {
+            description: 'Rainy',
+            icon: "http://openweathermap.org/img/wn/11d@2x.png"
+        };
+    } else {
+        return null;
     }
-}
-
-const getIconWithCode = (openWeatherCode) => {
-
 }
 
 export default service;

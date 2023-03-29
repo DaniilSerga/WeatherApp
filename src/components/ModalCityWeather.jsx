@@ -11,7 +11,6 @@ const ModalCityWeather = ({clickEvent, city, classes}) => {
                 <h3>{city.name}</h3>
                 <p>{regionNames.of(city.country.toUpperCase())}</p>
             </div>
-            <hr></hr>
         </li>
     );
 }

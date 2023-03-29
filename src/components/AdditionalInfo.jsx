@@ -33,7 +33,7 @@ const AdditionalInfo = () => {
     return(
         <>
             <div className={classes.additionalDataContainer}>
-                <HourlyWeather data={weather.value}/>
+                <HourlyWeather data={weather.value.hourly.slice(0, 10)}/>
 
                 <div className={classes.additionalData}>
                     <UvIndex data={weather.value.current.uvi}/>

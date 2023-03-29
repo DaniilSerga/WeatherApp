@@ -19,6 +19,12 @@ function App() {
         data: null,
     });
 
+    const [selectedCities, setSelectedCities] = useState({
+        isLoading: false,
+        data: [],
+        weather: []
+    });
+
     const [modalActive, setModalActive] = useState(false);
 
     useEffect(() => {
@@ -30,7 +36,14 @@ function App() {
                     value: res
                 });
             });
+
+            setSelectedCities({isLoading: true});
+            setSelectedCities({
+                isLoading: false,
+                data: [weather.value, ...selectedCities.data]
+            });
         }
+        
         if (forecast) {
             setForecast({isLoading: true});
             service.getForecast().then(res => {
@@ -42,14 +55,33 @@ function App() {
         }
     }, []);
 
+    useEffect(() => {
+        if (selectedCities && selectedCities.data) {
+            setSelectedCities({isLoading: true});
+            selectedCities.data.forEach(city => {
+                service.getCurrentWeatherByCityCoords({lon: city.longitude, lat: city.latitude}).then(res => {
+                    setSelectedCities({
+                        isLoading: true,
+                        data: [...selectedCities.data],
+                        weather: [...selectedCities.weather, res]
+                    })
+                })
+            })
+        }
+    }, [selectedCities, setSelectedCities])
+
     return (
         <div className='app'>
-            <div className='videoContainer'>
-                <Background isLoading={weather.isLoading} data={weather.value}/>
-            </div>
+            { !weather.isLoading && weather.value && 
+                <div className='videoContainer'>
+                    <Background data={weather.value}/>
+                </div>
+            }
             
             <div className='header'>
-                <Header isLoading={weather.isLoading} value={weather.value}/>
+                { !weather.isLoading && weather.value && 
+                    <Header isLoading={weather.isLoading} value={weather.value}/>
+                }
             </div>
             
             <div className='infoSection'>
@@ -61,10 +93,10 @@ function App() {
                 </div>
             </div>
             <div className='citiesSection'>
-                <CitiesWeather setModalActive={setModalActive}/>
+                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities.data}/>
             </div>
 
-            {modalActive && <Modal setModalActive={setModalActive}/>}
+            { modalActive && <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities}/> }
         </div>
     );
 }
