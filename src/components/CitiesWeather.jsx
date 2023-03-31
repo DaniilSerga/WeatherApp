@@ -15,7 +15,7 @@ const CitiesWeather = ({setModalActive, citiesWeather}) => {
             <div className={classes.citiesSection}>
                 <CityWeather isCurrentLocation={true} city="Minsk"/>
 
-                { citiesWeather && citiesWeather.length > 1 && citiesWeather.map(city => {
+                { citiesWeather && citiesWeather.map(city => {
                     return <CityWeather city={city.name}/>
                 })}
             </div>

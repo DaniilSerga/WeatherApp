@@ -19,11 +19,7 @@ function App() {
         data: null,
     });
 
-    const [selectedCities, setSelectedCities] = useState({
-        isLoading: false,
-        data: [],
-        weather: []
-    });
+    const [selectedCities, setSelectedCities] = useState([]);
 
     const [modalActive, setModalActive] = useState(false);
 
@@ -35,13 +31,10 @@ function App() {
                     isLoading: false, 
                     value: res
                 });
+
+                setSelectedCities(prevCities => [...prevCities, res]);
             });
 
-            setSelectedCities({isLoading: true});
-            setSelectedCities({
-                isLoading: false,
-                data: [weather.value, ...selectedCities.data]
-            });
         }
         
         if (forecast) {
@@ -55,21 +48,6 @@ function App() {
         }
     }, []);
 
-    useEffect(() => {
-        if (selectedCities && selectedCities.data) {
-            setSelectedCities({isLoading: true});
-            selectedCities.data.forEach(city => {
-                service.getCurrentWeatherByCityCoords({lon: city.longitude, lat: city.latitude}).then(res => {
-                    setSelectedCities({
-                        isLoading: true,
-                        data: [...selectedCities.data],
-                        weather: [...selectedCities.weather, res]
-                    })
-                })
-            })
-        }
-    }, [selectedCities, setSelectedCities])
-
     return (
         <div className='app'>
             { !weather.isLoading && weather.value && 
@@ -80,7 +58,7 @@ function App() {
             
             <div className='header'>
                 { !weather.isLoading && weather.value && 
-                    <Header isLoading={weather.isLoading} value={weather.value}/>
+                    <Header value={weather.value}/>
                 }
             </div>
             
@@ -93,7 +71,7 @@ function App() {
                 </div>
             </div>
             <div className='citiesSection'>
-                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities.data}/>
+                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities}/>
             </div>
 
             { modalActive && <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities}/> }

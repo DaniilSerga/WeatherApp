@@ -17,13 +17,15 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
     const submitCity = () => {
         console.log('CHOSEN CITY');
         console.log(chosenCity);
-
-        setSelectedCities({
-            data: [selectedCities.data, chosenCity]
-        });
         
-        console.log('\nSELECTED CITIES DATA');
-        console.log(selectedCities);
+        service.getCurrentWeatherByCityCoords({
+            lon: chosenCity.longitude, 
+            lat: chosenCity.latitude
+        }).then(res => {
+            setSelectedCities((prevCities) => [
+                ...prevCities, res
+            ]);
+        })
 
         setModalActive(false);
     }
@@ -73,7 +75,6 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
     
         clearTimeout(timeoutId - 1);
     }
-
 
     return (
         <div className={classes.modalContainer}>

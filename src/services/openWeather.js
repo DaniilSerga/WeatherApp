@@ -2,6 +2,7 @@ import keys from './secrets';
 
 const service = {
     getCurrentWeather: async () => {
+        console.log('got current weather')
         const coords = await getCoords();
         return await fetchCurrentWeather(coords);
     },
@@ -36,6 +37,7 @@ const fetchCurrentWeather = async (coords) => {
             return data;
         }).catch(err => {
             console.log(err);
+            return null;
         });
 }
 
