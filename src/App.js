@@ -31,8 +31,6 @@ function App() {
                     isLoading: false, 
                     value: res
                 });
-
-                setSelectedCities(prevCities => [...prevCities, res]);
             });
 
         }
@@ -71,7 +69,7 @@ function App() {
                 </div>
             </div>
             <div className='citiesSection'>
-                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities}/>
+                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>
             </div>
 
             { modalActive && <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities}/> }

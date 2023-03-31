@@ -3,7 +3,7 @@ import classes from './CitiesWeather.module.css';
 import loupe from '../assets/icons/loupe.png'
 import CityWeather from "./CityWeather";
 
-const CitiesWeather = ({setModalActive, citiesWeather}) => {
+const CitiesWeather = ({setModalActive, citiesWeather, currentCity, setCurrentCity}) => {
     return(
         <div className={classes.citiesWeather}>
             <div className={classes.searchSection}>
@@ -13,10 +13,10 @@ const CitiesWeather = ({setModalActive, citiesWeather}) => {
                 </button>
             </div>
             <div className={classes.citiesSection}>
-                <CityWeather isCurrentLocation={true} city="Minsk"/>
+                { currentCity && <CityWeather isCurrentLocation={true} city={currentCity}/> }
 
-                { citiesWeather && citiesWeather.map(city => {
-                    return <CityWeather city={city.name}/>
+                { citiesWeather && citiesWeather.map((city, index) => {
+                    return <CityWeather city={city} key={index}/>
                 })}
             </div>
         </div>

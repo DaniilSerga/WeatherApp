@@ -15,12 +15,6 @@
   overflow: auto;
 }
 
-.backgroundVideo {
-  position: fixed;
-  z-index: -1;
-  width: 100%;
-}
-
 .videoContainer{
   position: absolute;
   z-index: -1;
