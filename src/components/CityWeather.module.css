@@ -44,10 +44,13 @@
 }
 
 .weatherInfoSection {
+    position: absolute;
+    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: fit-content;
+    margin-right: 20px;
     text-align: center;
 }
 
@@ -60,7 +63,7 @@
     font-weight: 500;
     font-size: 110px;
     line-height: 131px;
-    letter-spacing: 0.41px;
+    letter-spacing: 0.4px;
 }
 
 .extremeTemps {

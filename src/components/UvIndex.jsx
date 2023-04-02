@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from './UvIndex.module.css';
-import icon from '../assets/icons/uviIcon.png';
+import icon from '../assets/icons/uviIcon.webp';
 
 const UvIndex = ({data}) => {
     const getUviExpanation = (data) => {

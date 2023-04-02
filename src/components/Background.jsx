@@ -3,7 +3,8 @@ import classes from './Background.module.css';
 import backgrounds from '../constants/video-backgrounds';
 
 const Background = ({isCityBackground, data}) => {
-    const displayedVideo = backgrounds.find(video => video.definition === data.weather[0].main.toLowerCase())
+    console.log(data);
+    const displayedVideo = backgrounds.find(video =>  data.weather[0].main.toLowerCase().includes(video.definition))
     
     if (!isCityBackground) {
         return(

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './Wind.module.css';
-import icon from '../assets/icons/wind.png';
-import compass from '../assets/icons/compass.png'
+import icon from '../assets/icons/wind.webp';
+import compass from '../assets/icons/compass.webp'
 
 const Wind = ({data}) => {
     return(

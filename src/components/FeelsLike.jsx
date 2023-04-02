@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './FeelsLike.module.css';
-import icon from '../assets/icons/feelsLikeIcon.png';
+import icon from '../assets/icons/feelsLikeIcon.webp';
 
 const FeelsLike = ({data}) => {
     return(

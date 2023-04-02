@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './CitiesWeather.module.css';
-import loupe from '../assets/icons/loupe.png'
+import loupe from '../assets/icons/loupe.webp'
 import CityWeather from "./CityWeather";
 
 const CitiesWeather = ({setModalActive, citiesWeather, currentCity, setCurrentCity}) => {

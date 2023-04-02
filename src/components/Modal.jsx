@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import classes from './Modal.module.css';
-import closeImg from '../assets/icons/close.png';
-import loupeImg from '../assets/icons/loupe.png';
+import closeImg from '../assets/icons/close.webp';
+import loupeImg from '../assets/icons/loupe.webp';
 import ModalCityWeather from "./ModalCityWeather";
 import service from '../services/openWeather';
 
@@ -15,9 +15,6 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
     const [isSubmitButtonActive, setSubmitButtonActive] = useState(true);
 
     const submitCity = () => {
-        console.log('CHOSEN CITY');
-        console.log(chosenCity);
-        
         service.getCurrentWeatherByCityCoords({
             lon: chosenCity.longitude, 
             lat: chosenCity.latitude

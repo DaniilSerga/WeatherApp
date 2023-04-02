@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import classes from './Sunrise.module.css';
-import icon from '../assets/icons/sunrise.png';
-import graph from '../assets/icons/sunriseGraph.png';
+import icon from '../assets/icons/sunrise.webp';
+import graph from '../assets/icons/sunriseGraph.webp';
 
 const Sunrise = ({data}) => {
     const [currentTime, setCurrentTime] = useState(new Date());
