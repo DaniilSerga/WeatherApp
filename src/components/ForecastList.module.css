@@ -3,7 +3,7 @@
     display: block;
     width: auto;
     height: auto;
-    min-width: 400px;
+    min-width: fit-content;
     min-height: 400px;
 }
 
@@ -24,6 +24,7 @@
     font-weight: 500;
     text-transform: uppercase;
     text-align: center;
+    overflow: hidden;
 }
 
 .forecastListContainer > ul {

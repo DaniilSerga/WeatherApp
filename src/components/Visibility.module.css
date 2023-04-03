@@ -21,6 +21,7 @@
 .visibilityValue {
     font-size: 43px;
     line-height: 52px;
+    overflow: hidden;
 }
 
 .visibilityValue::after {

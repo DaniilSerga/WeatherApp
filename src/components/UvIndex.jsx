@@ -20,20 +20,24 @@ const UvIndex = ({data}) => {
     }
 
     return(
-        <>
-            <div className={classes.uvIndex}>
-                <div className={classes.sectionHeader}>
-                    <img src={icon} alt='uviIndex'></img>
-                    <p>uv index</p>
-                </div>
-                <div className={classes.sectionBody}>
-                    <p className={classes.uvi}>{data}</p>
-                    <p className={classes.uviDefinition}> {getUviExpanation(data)} </p>
-                    <hr></hr>
-                    <p className={classes.uviForecast}>{getUviExpanation(data)} for the rest of the day</p>
-                </div>
+        <div className={classes.uvIndex}>
+            <div className={classes.sectionHeader}>
+                <img src={icon} alt='uviIndex'></img>
+                <p>uv index</p>
             </div>
-        </>
+            <div className={classes.sectionBody}>
+                <p className={classes.uvi}>{data}</p>
+                <p className={classes.uviDefinition}> {getUviExpanation(data)} </p>
+                
+                <div className={classes.uviGraphContainer}>
+                    <div className={classes.uviGraph}>
+                        
+                    </div>
+                </div>
+                
+                <p className={classes.uviForecast}>{getUviExpanation(data)} for the rest of the day</p>
+            </div>
+        </div>
     )
 }
 

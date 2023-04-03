@@ -1,5 +1,5 @@
 .citiesWeather {
-    position: absolute;
+    position: fixed;
     z-index: 1;
     width: 30%;
     height: 100%;

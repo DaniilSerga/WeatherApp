@@ -1,9 +1,16 @@
+
 .forecast {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     margin: 0 15px;
     padding: 15px;
     border-bottom: 0.2px solid rgba(66, 66, 66, 0.1);
+}
+
+.container {
+    display: flex;
+    align-items: center;
 }
 
 .weatherIcon {
@@ -33,15 +40,18 @@
     font-size: 22px;
 }
 
-.tempIndicator {
-    display: inline-flex;
+.line {
     width: 165px;
+    height: 2px;
     margin: 0 15px;
     border: 0.2px solid #424242;
     border-radius: 44px;
+    background-color: #424242;
 }
 
 .extremeTemp {
+    display: flex;
+    align-items: center;
     margin-left: 100px;
     top: 0;
     right: 0;
@@ -51,7 +61,8 @@
 }
 
 .extremeTemp > p {
-    display: inline;
+    display: inline-block;
+    min-width: 40px;
 }
 
 .extremeTemp > p::after {

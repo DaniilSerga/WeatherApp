@@ -33,9 +33,6 @@ function App() {
                 });
             });
 
-        }
-        
-        if (forecast) {
             setForecast({isLoading: true});
             service.getForecast().then(res => {
                 setForecast({
@@ -69,7 +66,7 @@ function App() {
                 </div>
             </div>
             <div className='citiesSection'>
-                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>
+                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} weather={weather.value} setCurrentCity={setWeather}/>
             </div>
 
             { modalActive && <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities}/> }

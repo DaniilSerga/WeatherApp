@@ -5,14 +5,14 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Open Sans';
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .app {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: auto;
+  height: 100%;
 }
 
 .videoContainer{
@@ -40,8 +40,6 @@
 .weatherInfo {
   position: relative;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
   height: 100%;
   margin-bottom: 34px;

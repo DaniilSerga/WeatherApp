@@ -11,6 +11,7 @@ const Forecast = ({ weather }) => {
   return (
     <>
         <li className={classes.forecast}>
+          <div className={classes.container}>
             <p className={classes.dayOfWeek}>{DAYS[weather.time.getDay()]}</p>
 
             {weather.weatherIcon.description.includes("Rainy") ? (
@@ -26,6 +27,7 @@ const Forecast = ({ weather }) => {
                 </div>
             ) : (
               <div className={classes.iconContainer}>
+                
                     <img
                       className={classes.weatherIcon}
                       src={weather.weatherIcon.icon}
@@ -33,11 +35,12 @@ const Forecast = ({ weather }) => {
                     ></img>
               </div>
             )}
+          </div>
 
             <div className={classes.extremeTemp}>
                 <p className={classes.minTemp}>{Math.round(weather.minTemp)}</p>
                 
-                <hr className={classes.tempIndicator}></hr>
+                <div className={classes.line}></div>
                 
                 <p className={classes.maxTemp}>{Math.round(weather.maxTemp)}</p>
             </div>

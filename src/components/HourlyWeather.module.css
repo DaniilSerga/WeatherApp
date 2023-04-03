@@ -19,6 +19,7 @@
     color: #373C42;
     font-size: 18px;
     line-height: 21px;
+    overflow: hidden;
 }
 
 .sectionBody {

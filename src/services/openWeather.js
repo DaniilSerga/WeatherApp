@@ -42,6 +42,8 @@ const fetchCurrentWeather = async (coords) => {
 }
 
 const fetchAdditinalCurrentWeather = async (coords) => {
+    console.error('GLOBAL MONEY LOST!!!! ALERT');
+    
     return fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=daily,minutely&units=metric&appid=${keys.openWeather2}`)
         .then(response => {
             return response.json();

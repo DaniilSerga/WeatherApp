@@ -1,4 +1,13 @@
 .cityWeather {
+    cursor: pointer;
+    position: relative;
+    width: auto;
+    height: 200px;
+    min-height: 200px;
+    border-radius: 15px;
+}
+
+.currentCityWeather {
     position: relative;
     width: auto;
     height: 200px;
