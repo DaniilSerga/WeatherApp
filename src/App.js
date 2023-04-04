@@ -10,6 +10,7 @@ import service from './services/openWeather';
 
 function App() {
     const [weather, setWeather] = useState({
+        isInitialized: false,
         isLoading: false,
         value: null,
     });
@@ -24,24 +25,64 @@ function App() {
     const [modalActive, setModalActive] = useState(false);
 
     useEffect(() => {
-        if (weather) {
+        if (weather && weather.value) {
+            console.log('NOT UPDATED');
+            console.log('lat: ' + weather.value.coord.lat);
+            console.log('lon: ' + weather.value.coord.lon);
+            console.log(forecast);
+
+            setForecast({isLoading: true});
+            service.getForecastByCoords({
+                lat: weather.value.coord.lat,
+                lon: weather.value.coord.lon,
+            }).then(res => {
+                setForecast({
+                    isLoading: false,
+                    data: res
+                })
+                console.log('UPDATED');
+                console.log(forecast);
+            });
+        }
+    }, [weather])
+
+    useEffect(() => {
+        console.log('INIT');
+        setTimeout(() => {
             setWeather({isLoading: true});
             service.getCurrentWeather().then(res => {
-                setWeather({
-                    isLoading: false, 
-                    value: res
-                });
+                console.log(res);
+                setWeather({isLoading: false, value: res});
             });
 
             setForecast({isLoading: true});
             service.getForecast().then(res => {
-                setForecast({
-                    isLoading: false,
-                    data: res,
-                });
-            });
-        }
-    }, []);
+                setForecast({isLoading: false, data: res});
+            })
+        }, 3000);
+    }, [])
+
+    // useEffect(() => {
+    //     console.log('iteration');
+
+    //     if (weather) {
+    //         setWeather({isLoading: true});
+    //         service.getCurrentWeather().then(res => {
+    //             setWeather({
+    //                 isLoading: false, 
+    //                 value: res
+    //             });
+    //         });
+
+    //         setForecast({isLoading: true});
+    //         service.getForecast().then(res => {
+    //             setForecast({
+    //                 isLoading: false,
+    //                 data: res,
+    //             });
+    //         });
+    //     }
+    // }, []);
 
     return (
         <div className='app'>
@@ -58,18 +99,24 @@ function App() {
             </div>
             
             <div className='infoSection'>
-                <div className='weatherInfo'>
-                    <ForecastList data={forecast.data}/>
-                    <div className='additionalInfo'>
-                        <AdditionalInfo/>
+                { !forecast.isLoading && forecast.data && !weather.isLoading && weather.value &&
+                    <div className='weatherInfo'>
+                        <ForecastList data={forecast.data}/>
+                        <div className='additionalInfo'>
+                            <AdditionalInfo currentWeather={weather.value}/>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
             <div className='citiesSection'>
-                <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} weather={weather.value} setCurrentCity={setWeather}/>
+                { !weather.isLoading && weather.value &&
+                    <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>
+                }
             </div>
 
-            { modalActive && <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities}/> }
+            { modalActive && 
+                <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities}/> 
+            }
         </div>
     );
 }

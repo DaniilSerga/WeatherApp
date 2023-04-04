@@ -8,6 +8,12 @@ const CityWeather = ({ isCurrentLocation, city, currentCity, setCurrentCity }) =
     const [cityTime, setCurrentTime] = useState(new Date());
 
     useEffect(() => {
+        if (isCurrentLocation) {
+            setChosenCity(city);
+        }
+    }, [city])
+    
+    useEffect(() => {
         let timer = setInterval(() => setCurrentTime(new Date(city.dt)), 1000);
 
         return () => {
@@ -21,12 +27,9 @@ const CityWeather = ({ isCurrentLocation, city, currentCity, setCurrentCity }) =
         }
 
         const chosen = chosenCity;
+
         setChosenCity(currentCity);
-        console.log('CHOSEN');
-        console.log(chosenCity);
         setCurrentCity({isLoading: false, value: chosen});
-        console.log('CURRENT');
-        console.log(currentCity);
     }
 
     return (

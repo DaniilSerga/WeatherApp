@@ -9,16 +9,15 @@ const service = {
     getCurrentWeatherByCityCoords: async (coords) => {
         return await fetchCurrentWeather(coords);
     },
-    getAdditionalCurrentWeather: async () => {
-        const coords = await getCoords();
+    getAdditionalCurrentWeather: async (coords) => {
         return await fetchAdditinalCurrentWeather(coords);
     },
     getForecast: async() => {
         const coords = await getCoords();
         return await fetchForecast(coords);
     },
-    getForecastByCityName: async(cityName) => {
-
+    getForecastByCoords: async(coords) => {
+        return await fetchForecast(coords);
     },
     getCitiesNames: async(input) => {
         if (!input) {
