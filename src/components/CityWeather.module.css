@@ -74,6 +74,7 @@
     font-size: 110px;
     line-height: 131px;
     letter-spacing: 0.4px;
+    overflow: hidden;
 }
 
 .extremeTemps {
