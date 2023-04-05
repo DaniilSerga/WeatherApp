@@ -19,9 +19,20 @@ function App() {
         data: null,
     });
 
-    const [selectedCities, setSelectedCities] = useState([]);
 
     const [modalActive, setModalActive] = useState(false);
+
+    useEffect(() => {
+        setWeather({isLoading: true});
+        service.getCurrentWeather().then(res => {
+            setWeather({isLoading: false, value: res});
+        });
+
+        setForecast({isLoading: true});
+        service.getForecast().then(res => {
+            setForecast({isLoading: false, data: res});
+        })
+    }, [])
 
     useEffect(() => {
         if (weather && weather.value) {
@@ -38,18 +49,11 @@ function App() {
         }
     }, [weather])
 
-    useEffect(() => {
-        setWeather({isLoading: true});
-        service.getCurrentWeather().then(res => {
-            console.log(res);
-            setWeather({isLoading: false, value: res});
-        });
+    const [selectedCities, setSelectedCities] = useState(JSON.parse(localStorage.getItem('selectedCities')) || []);
 
-        setForecast({isLoading: true});
-        service.getForecast().then(res => {
-            setForecast({isLoading: false, data: res});
-        })
-    }, [])
+    useEffect(() => {
+        localStorage.setItem('selectedCities', JSON.stringify(selectedCities));
+    }, [selectedCities]);
 
     return (
         <div className='app'>
