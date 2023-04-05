@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
 import classes from './CityWeather.module.css';
-import Background from "./Background";
+import CityBackground from "./CityBackground";
 
-const CityWeather = ({ isCurrentLocation, city, currentCity, setCurrentCity }) => {
-    const [chosenCity, setChosenCity] = useState(city);
+const CityWeather = ({ isCurrentLocation, city, setCurrentCity }) => {
+    const [chosenCity] = useState(city);
 
     const [cityTime, setCurrentTime] = useState(new Date());
 
-    useEffect(() => {
-        if (isCurrentLocation) {
-            setChosenCity(city);
-        }
-    }, [city])
-    
     useEffect(() => {
         let timer = setInterval(() => setCurrentTime(new Date(city.dt)), 1000);
 
@@ -22,19 +16,14 @@ const CityWeather = ({ isCurrentLocation, city, currentCity, setCurrentCity }) =
     })
 
     const changeCurrentCity = () => {
-        if (isCurrentLocation) {
-            return;
-        }
-
-        const chosen = chosenCity;
-
-        setChosenCity(currentCity);
-        setCurrentCity({isLoading: false, value: chosen});
+        setCurrentCity({isLoading: false, value: chosenCity});
     }
 
     return (
         <div className={isCurrentLocation ? classes.currentCityWeather : classes.cityWeather} onClick={() => changeCurrentCity()}>
-            <Background isCityBackground={true} data={chosenCity}/>
+            { chosenCity &&
+                <CityBackground data={chosenCity}/>
+            }
             <div className={classes.cityWeatherContainer}>
                 <div className={classes.cityInfoSection}>
                     <h3 className={classes.locationHeader}>{isCurrentLocation ? 'My location' : chosenCity.name}</h3>

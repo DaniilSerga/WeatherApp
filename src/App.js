@@ -10,7 +10,6 @@ import service from './services/openWeather';
 
 function App() {
     const [weather, setWeather] = useState({
-        isInitialized: false,
         isLoading: false,
         value: null,
     });
@@ -26,11 +25,6 @@ function App() {
 
     useEffect(() => {
         if (weather && weather.value) {
-            console.log('NOT UPDATED');
-            console.log('lat: ' + weather.value.coord.lat);
-            console.log('lon: ' + weather.value.coord.lon);
-            console.log(forecast);
-
             setForecast({isLoading: true});
             service.getForecastByCoords({
                 lat: weather.value.coord.lat,
@@ -40,49 +34,22 @@ function App() {
                     isLoading: false,
                     data: res
                 })
-                console.log('UPDATED');
-                console.log(forecast);
             });
         }
     }, [weather])
 
     useEffect(() => {
-        console.log('INIT');
-        setTimeout(() => {
-            setWeather({isLoading: true});
-            service.getCurrentWeather().then(res => {
-                console.log(res);
-                setWeather({isLoading: false, value: res});
-            });
+        setWeather({isLoading: true});
+        service.getCurrentWeather().then(res => {
+            console.log(res);
+            setWeather({isLoading: false, value: res});
+        });
 
-            setForecast({isLoading: true});
-            service.getForecast().then(res => {
-                setForecast({isLoading: false, data: res});
-            })
-        }, 3000);
+        setForecast({isLoading: true});
+        service.getForecast().then(res => {
+            setForecast({isLoading: false, data: res});
+        })
     }, [])
-
-    // useEffect(() => {
-    //     console.log('iteration');
-
-    //     if (weather) {
-    //         setWeather({isLoading: true});
-    //         service.getCurrentWeather().then(res => {
-    //             setWeather({
-    //                 isLoading: false, 
-    //                 value: res
-    //             });
-    //         });
-
-    //         setForecast({isLoading: true});
-    //         service.getForecast().then(res => {
-    //             setForecast({
-    //                 isLoading: false,
-    //                 data: res,
-    //             });
-    //         });
-    //     }
-    // }, []);
 
     return (
         <div className='app'>

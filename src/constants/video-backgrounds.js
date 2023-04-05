@@ -1,5 +1,6 @@
 const backgrounds = [
     { definition: 'rain', video: require('../assets/videos/rain.mp4') }, 
+    { definition: 'drizzle', video: require('../assets/videos/rain.mp4') },
     { definition: 'snow', video: require('../assets/videos/snow.mp4') }, 
     { definition: 'clear', video: require('../assets/videos/sunny.mp4') }, 
     { definition: 'sun', video: require('../assets/videos/sunny.mp4') }, 

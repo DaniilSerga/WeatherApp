@@ -8,6 +8,7 @@
 }
 
 .currentCityWeather {
+    cursor: pointer;
     position: relative;
     width: auto;
     height: 200px;

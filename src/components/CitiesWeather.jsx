@@ -13,10 +13,10 @@ const CitiesWeather = ({setModalActive, citiesWeather, currentCity, setCurrentCi
                 </button>
             </div>
             <div className={classes.citiesSection}>
-                { currentCity && <CityWeather isCurrentLocation={true} city={currentCity}/> }
+                { currentCity && <CityWeather isCurrentLocation={true} city={currentCity} setCurrentCity={setCurrentCity}/> }
 
                 { citiesWeather && citiesWeather.map((city, index) => {
-                    return <CityWeather city={city} key={index} currentCity={currentCity} setCurrentCity={setCurrentCity}/>
+                    return <CityWeather city={city} key={index} setCurrentCity={setCurrentCity}/>
                 })}
             </div>
         </div>
