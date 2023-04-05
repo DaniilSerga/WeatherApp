@@ -1,19 +1,31 @@
 {
   "files": {
-    "main.css": "/WeatherApp/static/css/main.905475ca.css",
-    "main.js": "/WeatherApp/static/js/main.ceb8f9ce.js",
+    "main.css": "/WeatherApp/static/css/main.3ff7fca5.css",
+    "main.js": "/WeatherApp/static/js/main.1627a547.js",
     "static/media/wind.mp4": "/WeatherApp/static/media/wind.61af9e152e42459eb59d.mp4",
     "static/media/clouds.mp4": "/WeatherApp/static/media/clouds.e3d2df473b72c0fec6b1.mp4",
     "static/media/sunny.mp4": "/WeatherApp/static/media/sunny.d7a606588ebdf19fff02.mp4",
     "static/media/snow.mp4": "/WeatherApp/static/media/snow.a9737741511a100c6687.mp4",
+    "static/media/mist.mp4": "/WeatherApp/static/media/mist.70239ba9f32ce41a6234.mp4",
     "static/media/rain.mp4": "/WeatherApp/static/media/rain.3727638e43f2a1664b1c.mp4",
     "static/media/thunder.mp4": "/WeatherApp/static/media/thunder.70d76bf271bb3fd0769a.mp4",
+    "static/media/compass.webp": "/WeatherApp/static/media/compass.266dcffb3de8b0956c86.webp",
+    "static/media/sunriseGraph.webp": "/WeatherApp/static/media/sunriseGraph.cab79c79afb8525f783d.webp",
     "index.html": "/WeatherApp/index.html",
-    "main.905475ca.css.map": "/WeatherApp/static/css/main.905475ca.css.map",
-    "main.ceb8f9ce.js.map": "/WeatherApp/static/js/main.ceb8f9ce.js.map"
+    "static/media/visibilityIcon.webp": "/WeatherApp/static/media/visibilityIcon.73a89df3c04947220b35.webp",
+    "static/media/humidityIcon.webp": "/WeatherApp/static/media/humidityIcon.bdf0631a04877ed63794.webp",
+    "static/media/loupe.webp": "/WeatherApp/static/media/loupe.0d26678a14b04c3a26c3.webp",
+    "static/media/close.webp": "/WeatherApp/static/media/close.c3a05588ede924ada066.webp",
+    "static/media/sunrise.webp": "/WeatherApp/static/media/sunrise.c3552f9c75d5bd440323.webp",
+    "static/media/wind.webp": "/WeatherApp/static/media/wind.32576e90346d2d100ff9.webp",
+    "static/media/uviIcon.webp": "/WeatherApp/static/media/uviIcon.54807361a869b8ec0bd8.webp",
+    "static/media/checkMark.webp": "/WeatherApp/static/media/checkMark.998b36b48a9694078df5.webp",
+    "static/media/feelsLikeIcon.webp": "/WeatherApp/static/media/feelsLikeIcon.9fc9216d84eba55c2327.webp",
+    "main.3ff7fca5.css.map": "/WeatherApp/static/css/main.3ff7fca5.css.map",
+    "main.1627a547.js.map": "/WeatherApp/static/js/main.1627a547.js.map"
   },
   "entrypoints": [
-    "static/css/main.905475ca.css",
-    "static/js/main.ceb8f9ce.js"
+    "static/css/main.3ff7fca5.css",
+    "static/js/main.1627a547.js"
   ]
 }
