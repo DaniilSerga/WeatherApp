@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './FeelsLike.module.css';
+import classes from './FeelsLikeBlock.module.css';
 import icon from '../assets/icons/feelsLikeIcon.webp';
 
 const FeelsLike = ({data}) => {
@@ -7,7 +7,7 @@ const FeelsLike = ({data}) => {
         <div className={classes.feelsLike}>
             <div className={classes.sectionHeader}>
                 <img src={icon} alt='feels like'></img>
-                <p>Feels like</p>
+                <h2>Feels like</h2>
             </div>
             <div className={classes.sectionBody}>
                 <p className={classes.temperature}>{Math.round(data)}</p>

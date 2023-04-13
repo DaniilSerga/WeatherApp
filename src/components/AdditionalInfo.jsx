@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import service from '../services/openWeather';
 import classes from './AdditionalInfo.module.css';
-import FeelsLike from "./FeelsLike";
+import FeelsLikeBlock from "./FeelsLikeBlock";
 import HourlyWeather from "./HourlyWeather";
-import Humidity from "./Humidity";
-import Sunrise from "./Sunrise";
-import UvIndex from "./UvIndex";
-import Visibility from "./Visibility";
-import Wind from "./Wind";
+import HumidityBlock from "./HumidityBlock";
+import SunriseBlock from "./SunriseBlock";
+import UvIndexBlock from "./UvIndexBlock";
+import VisibilityBlock from "./VisibilityBlock";
+import WindBlock from "./WindBlock";
 
 const AdditionalInfo = ({currentWeather}) => {
     const [weather, setWeather] = useState({
@@ -39,12 +39,12 @@ const AdditionalInfo = ({currentWeather}) => {
             <HourlyWeather data={weather.value.hourly.slice(0, 10)}/>
 
             <div className={classes.additionalData}>
-                <UvIndex data={weather.value.current.uvi}/>
-                <Sunrise data={weather.value.current.sunrise}/>
-                <Wind data={weather.value.current.wind_speed}/>
-                <FeelsLike data={weather.value.current.feels_like}/>
-                <Humidity data={weather.value.current.humidity}/>
-                <Visibility data={weather.value.current.visibility}/>
+                <UvIndexBlock data={weather.value.current.uvi}/>
+                <SunriseBlock data={weather.value.current.sunrise}/>
+                <WindBlock data={weather.value.current.wind_speed}/>
+                <FeelsLikeBlock data={weather.value.current.feels_like}/>
+                <HumidityBlock data={weather.value.current.humidity}/>
+                <VisibilityBlock data={weather.value.current.visibility}/>
             </div>
         </div>
     );

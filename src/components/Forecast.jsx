@@ -6,6 +6,7 @@ const Forecast = ({ weather }) => {
     return <h3>Loading...</h3>;
   }
 
+  // MOVE IT TO A DIFFERENT CONST FILE
   const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
@@ -27,12 +28,11 @@ const Forecast = ({ weather }) => {
                 </div>
             ) : (
               <div className={classes.iconContainer}>
-                
                     <img
                       className={classes.weatherIcon}
                       src={weather.weatherIcon.icon}
                       alt="weather icon"
-                    ></img>
+                    />
               </div>
             )}
           </div>

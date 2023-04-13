@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './Visibility.module.css';
+import classes from './VisibilityBlock.module.css';
 import icon from '../assets/icons/visibilityIcon.webp';
 
 const Visibility = ({data}) => {
@@ -7,7 +7,7 @@ const Visibility = ({data}) => {
         <div className={classes.visibility}>
             <div className={classes.sectionHeader}>
                 <img src={icon} alt="visibility"></img>
-                <p>visibility</p>
+                <h2>visibility</h2>
             </div>
             <div className={classes.sectionBody}>
                 <p className={classes.visibilityValue}>{Math.round(data / 1000)}</p>

@@ -1,12 +1,12 @@
 import React from "react";
 
-const ModalCityWeather = ({clickEvent, city, classes}) => {
+const CityItem = ({clickEvent, city, classes}) => {
     const regionNames = new Intl.DisplayNames(
         ['en'], {type: 'region'}
     );
 
     return(
-        <li onClick={clickEvent}>
+        <li onClick={(event) => clickEvent(event, city)}>
             <div className={classes.dataContainer}>
                 <h3>{city.name}</h3>
                 <p>{regionNames.of(city.country.toUpperCase())}</p>
@@ -15,4 +15,4 @@ const ModalCityWeather = ({clickEvent, city, classes}) => {
     );
 }
 
-export default ModalCityWeather;
+export default CityItem;

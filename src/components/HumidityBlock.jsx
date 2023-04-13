@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './Humidity.module.css';
+import classes from './HumidityBlock.module.css';
 import icon from '../assets/icons/humidityIcon.webp';
 
 const Humidity = ({data}) => {
@@ -7,7 +7,7 @@ const Humidity = ({data}) => {
         <div className={classes.humidity}>
             <div className={classes.sectionHeader}>
                 <img src={icon} alt='humidity'></img>
-                <p>Humidity</p>
+                <h2>Humidity</h2>
             </div>
             <div className={classes.sectionBody}>
                 <p className={classes.humidityValue}>{data}</p>

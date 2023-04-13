@@ -8,7 +8,7 @@
     height: 15px;
 }
 
-.sectionHeader > p {
+.sectionHeader > h2 {
     margin-left: 8px;
     text-transform: uppercase;
     font-size: 18px;
@@ -19,25 +19,20 @@
     overflow: hidden;
 }
 
+.sectionBody {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .sectionBody > img {
-    position: absolute;
-    left: 0;
-    width: 100%;
+    width: 140px;
+    height: 140px;
 }
 
-.currentTime {
-    font-size: 35px;
-    letter-spacing: 0px;
-    line-height: 52px;
-    font-weight: 400;
-}
-
-.sunriseTime {
+.windSpeed {
     position: absolute;
     width: 100%;
-    left: 0;
-    bottom: 0;
-    padding: 12px 0;
+    font-size: 23px;
     text-align: center;
-    font-size: 22px;
 }

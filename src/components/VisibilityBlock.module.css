@@ -8,7 +8,7 @@
     height: 15px;
 }
 
-.sectionHeader > p {
+.sectionHeader > h2 {
     margin-left: 8px;
     text-transform: uppercase;
     font-size: 18px;
@@ -19,19 +19,21 @@
     overflow: hidden;
 }
 
-.humidityValue {
-    margin-top: 10px;
-    font-size: 35px;
+.visibilityValue {
+    font-size: 43px;
+    line-height: 52px;
+    overflow: hidden;
 }
 
-.humidityValue::after {
-    content: '%';
+.visibilityValue::after {
+    content: ' km';
 }
 
 .info {
     position: absolute;
     bottom: 0;
     left: 0;
+    width: 100%;
     padding: 15px 20px;
     font-size: 22px;
 }

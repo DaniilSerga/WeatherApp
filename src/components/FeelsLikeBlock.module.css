@@ -8,32 +8,33 @@
     height: 15px;
 }
 
-.sectionHeader > p {
+.sectionHeader > h2 {
     margin-left: 8px;
     text-transform: uppercase;
     font-size: 18px;
     line-height: 22px;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.4px;
     font-weight: 500;
     opacity: 0.3;
     overflow: hidden;
 }
 
-.visibilityValue {
-    font-size: 43px;
-    line-height: 52px;
+.temperature {
+    margin-top: 10px;
+    font-size: 35px;
+    line-height: 42px;
     overflow: hidden;
 }
 
-.visibilityValue::after {
-    content: ' km';
+.temperature::after {
+    content: '°';
 }
 
 .info {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
     padding: 15px 20px;
     font-size: 22px;
+    line-height: 25px;
 }

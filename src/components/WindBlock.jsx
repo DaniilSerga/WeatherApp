@@ -1,5 +1,5 @@
 import React from "react";
-import classes from './Wind.module.css';
+import classes from './WindBlock.module.css';
 import icon from '../assets/icons/wind.webp';
 import compass from '../assets/icons/compass.webp'
 
@@ -8,7 +8,7 @@ const Wind = ({data}) => {
         <div className={classes.wind}>
             <div className={classes.sectionHeader}>
                 <img src={icon} alt='wind speed'></img>
-                <p>Wind</p>
+                <h2>Wind</h2>
             </div>
             <div className={classes.sectionBody}>
                 <img src={compass} alt='wind speed'></img>

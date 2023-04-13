@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import classes from './CityWeather.module.css';
-import CityBackground from "./CityBackground";
+import Background from "./Background";
 
-const CityWeather = ({ isCurrentLocation, city, setCurrentCity }) => {
+const CityWeather = ({ isCurrentLocation, city, setCurrentCity, cityBackgroundClass }) => {
     const [chosenCity] = useState(city);
 
     const [cityTime, setCurrentTime] = useState(new Date(city.dt * 1000));
@@ -27,7 +27,7 @@ const CityWeather = ({ isCurrentLocation, city, setCurrentCity }) => {
     return (
         <div className={isCurrentLocation ? classes.currentCityWeather : classes.cityWeather} onClick={() => changeCurrentCity()}>
             { chosenCity &&
-                <CityBackground data={chosenCity}/>
+                <Background data={chosenCity} styleClass={cityBackgroundClass}/>
             }
             <div className={classes.cityWeatherContainer}>
                 <div className={classes.cityInfoSection}>

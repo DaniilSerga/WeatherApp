@@ -1,4 +1,4 @@
-const backgrounds = [
+const BACKGROUNDS = [
     { definition: 'rain', video: require('../assets/videos/rain.mp4') }, 
     { definition: 'drizzle', video: require('../assets/videos/rain.mp4') },
     { definition: 'snow', video: require('../assets/videos/snow.mp4') }, 
@@ -10,4 +10,4 @@ const backgrounds = [
     { definition: 'mist', video: require('../assets/videos/mist.mp4') },
 ];
 
-export default backgrounds;
+export default BACKGROUNDS;

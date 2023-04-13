@@ -8,26 +8,24 @@
     height: 15px;
 }
 
-.sectionHeader > p {
+.sectionHeader > h2 {
     margin-left: 8px;
     text-transform: uppercase;
     font-size: 18px;
     line-height: 22px;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.03em;
     font-weight: 500;
     opacity: 0.3;
     overflow: hidden;
 }
 
-.temperature {
+.humidityValue {
     margin-top: 10px;
     font-size: 35px;
-    line-height: 42px;
-    overflow: hidden;
 }
 
-.temperature::after {
-    content: '°';
+.humidityValue::after {
+    content: '%';
 }
 
 .info {
@@ -36,5 +34,4 @@
     left: 0;
     padding: 15px 20px;
     font-size: 22px;
-    line-height: 25px;
 }

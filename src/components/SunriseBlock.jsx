@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import classes from './Sunrise.module.css';
+import classes from './SunriseBlock.module.css';
 import icon from '../assets/icons/sunrise.webp';
 import graph from '../assets/icons/sunriseGraph.webp';
 
@@ -18,7 +18,7 @@ const Sunrise = ({data}) => {
         <div className={classes.sunrise}>
             <div className={classes.sectionHeader}>
                 <img src={icon} alt='surise'></img>
-                <p>Sunrise</p>
+                <h2>Sunrise</h2>
             </div>
             <div className={classes.sectionBody}>
                 <p className={classes.currentTime}>

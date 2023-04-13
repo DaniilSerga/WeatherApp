@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Background from './components/Background';
 import CitiesWeather from './components/CitiesWeather';
 import ForecastList from './components/ForecastList';
@@ -37,7 +37,7 @@ function App() {
         });
 
         const selectedCitiesFromJson = JSON.parse(localStorage.getItem('selectedCities'));
-
+        // axious
         if (selectedCitiesFromJson) {
             selectedCitiesFromJson.forEach(city => {
                 city = service.getCurrentWeatherByCityCoords({
@@ -77,47 +77,47 @@ function App() {
     }, [selectedCities]);
 
     return (
-        <div className='app'>
+        <div className={classes.app}>
             { !weather.isLoading && weather.value && 
-                <div className='videoContainer'>
-                    <Background data={weather.value}/>
+                <div className={classes.videoContainer}>
+                    <Background data={weather.value} styleClass={classes.backgroundVideo}/>
                 </div>
             }
             
-            <div className='header'>
+            <div className={classes.header}>
                 { !weather.isLoading && weather.value && 
                     <Header value={weather.value}/>
                 }
             </div>
             
-            <div className='infoSection'>
+            <div className={classes.infoSection}>
                 { !forecast.isLoading && forecast.data && !weather.isLoading && weather.value &&
-                    <div className='weatherInfo'>
+                    <div className={classes.weatherInfo}>
                         <ForecastList data={forecast.data}/>
-                        <div className='additionalInfo'>
+                        <div className={classes.additionalInfo}>
                             <AdditionalInfo currentWeather={weather.value}/>
                         </div>
                     </div>
                 }
             </div>
 
-            <div className='sideMenu'>
-                <button className='menuIconContainer' onClick={() => setMenuActive(!menuActive)}>
+            <div className={classes.sideMenu}>
+                <button className={classes.menuIconContainer} onClick={() => setMenuActive(!menuActive)}>
                     <img src={menuIcon} alt='menu'/>
                 </button>
             </div>
 
             { menuActive &&
-                <div className='menuCitiesSection'>
+                <div className={classes.menuCitiesSection}>
                     { !weather.isLoading && weather.value &&
                         <CitiesWeather setMenuActive={setMenuActive} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>
                     }
                 </div>
             }
 
-            <div className='citiesSection'>
+            <div className={classes.citiesSection}>
                 { !weather.isLoading && weather.value &&
-                    <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>
+                    <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo}/>
                 }
             </div>
 

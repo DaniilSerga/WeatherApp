@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import classes from './Modal.module.css';
 import closeImg from '../assets/icons/close.webp';
 import loupeImg from '../assets/icons/loupe.webp';
-import ModalCityWeather from "./ModalCityWeather";
+import CityItem from "./CityItem";
 import service from '../services/openWeather';
 
 const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
@@ -11,8 +11,9 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
         data: [],
     });
     
+    const [checkedLi, setCheckedLi] = useState();
     const [chosenCity, setChosenCity] = useState({});
-    const [isSubmitButtonActive, setSubmitButtonActive] = useState(true);
+    const [isSubmitButtonDisabled, setSubmitButtonDisabled] = useState(true);
 
     const submitCity = () => {
         service.getCurrentWeatherByCityCoords({
@@ -26,42 +27,35 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
 
         setModalActive(false);
     }
-
-    const checkCity = (event) => {
-        if (!event.target.name === 'li') {
+    
+    const checkCity = (event, city) => {
+        if (event.target.closest('li') === checkedLi) {
+            checkedLi.className = '';
+            setCheckedLi(null);
+            setChosenCity(null)
+            setSubmitButtonDisabled(true);
             return;
         }
 
-        const clickedLi = event.target.closest('li');
-        
-        switch (clickedLi.className.includes('checked')) {
-            case true:
-                clickedLi.className = '';
-                setSubmitButtonActive(true);
-                break;
-            case false:
-                clickedLi.className = classes.checked;
-                setSubmitButtonActive(false);
-
-                const index = Array.prototype.indexOf.call(clickedLi.closest('ul').childNodes, clickedLi);
-
-                setChosenCity(cities.data[index]);
-
-                break;
-            default:
-                console.log('Some error occured while trying to select a city');
+        if (checkedLi) {
+            checkedLi.className = '';
         }
+
+        event.target.closest('li').className = classes.checked;
+        setCheckedLi(event.target.closest('li'));
+        setSubmitButtonDisabled(false);
+        setChosenCity(city);
     }
     
-    const fetchData = (event) => {
-        if (!event.target.value.trim()) {
+    const fetchData = (value) => {
+        if (!value.trim()) {
             setCities({ data: [] })
             return;
         }
 
         setCities({isLoading: true});
         const timeoutId = setTimeout(() => {
-            service.getCitiesNames(event.target.value)
+            service.getCitiesNames(value)
                 .then(res => {
                     setCities({
                         isLoading: false,
@@ -84,7 +78,7 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
                 <div className={classes.modalForm}>
                     <div className={classes.modalHeader}>
                         <img src={loupeImg} alt="search"></img>
-                        <input onChange={event => fetchData(event)} placeholder="Enter any city..."></input>
+                        <input onChange={event => fetchData(event.target.value)} placeholder="Enter any city..."></input>
                     </div>
 
                     <div className={classes.formContainer}>
@@ -97,7 +91,7 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
                                     <ul>
                                         {
                                             cities.data.map((city, index) => {
-                                                return <ModalCityWeather clickEvent={checkCity} key={index} city={city} classes={classes}/>
+                                                return <CityItem clickEvent={checkCity} key={index} city={city} classes={classes}/>
                                             })
                                         }
                                     </ul>
@@ -108,7 +102,7 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
                     </div>
                 </div>
                 <div className={classes.submitContainer}>
-                    <button className={classes.submitButton} onClick={() => submitCity()} disabled={isSubmitButtonActive}>OK</button>    
+                    <button className={classes.submitButton} onClick={() => submitCity()} disabled={isSubmitButtonDisabled}>OK</button>    
                 </div>
             </div>
         </div>
