@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Modal from './components/Modal';
 import AdditionalInfo from './components/AdditionalInfo';
 import service from './services/openWeather';
+import menuIcon from './assets/icons/menu.webp'
 
 function App() {
     const [weather, setWeather] = useState({
@@ -19,9 +20,11 @@ function App() {
         data: null,
     });
 
-
     const [modalActive, setModalActive] = useState(false);
+    const [menuActive, setMenuActive] = useState(false);
 
+    
+    
     useEffect(() => {
         setWeather({isLoading: true});
         service.getCurrentWeather().then(res => {
@@ -31,7 +34,19 @@ function App() {
         setForecast({isLoading: true});
         service.getForecast().then(res => {
             setForecast({isLoading: false, data: res});
-        })
+        });
+
+        const selectedCitiesFromJson = JSON.parse(localStorage.getItem('selectedCities'));
+
+        if (selectedCitiesFromJson) {
+            selectedCitiesFromJson.forEach(city => {
+                city = service.getCurrentWeatherByCityCoords({
+                    lon: city.coord.lon,
+                    lat: city.coord.lat
+                });
+            })
+            setSelectedCities(selectedCitiesFromJson);
+        }
     }, [])
 
     useEffect(() => {
@@ -52,6 +67,12 @@ function App() {
     const [selectedCities, setSelectedCities] = useState(JSON.parse(localStorage.getItem('selectedCities')) || []);
 
     useEffect(() => {
+        selectedCities.forEach(selectedCity => {
+            selectedCity = service.getCurrentWeatherByCityCoords({
+                lon: selectedCity.coord.lon,
+                lat: selectedCity.coord.lat
+            });
+        });
         localStorage.setItem('selectedCities', JSON.stringify(selectedCities));
     }, [selectedCities]);
 
@@ -79,6 +100,21 @@ function App() {
                     </div>
                 }
             </div>
+
+            <div className='sideMenu'>
+                <button className='menuIconContainer' onClick={() => setMenuActive(!menuActive)}>
+                    <img src={menuIcon} alt='menu'/>
+                </button>
+            </div>
+
+            { menuActive &&
+                <div className='menuCitiesSection'>
+                    { !weather.isLoading && weather.value &&
+                        <CitiesWeather setMenuActive={setMenuActive} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>
+                    }
+                </div>
+            }
+
             <div className='citiesSection'>
                 { !weather.isLoading && weather.value &&
                     <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>

@@ -5,15 +5,20 @@ import CityBackground from "./CityBackground";
 const CityWeather = ({ isCurrentLocation, city, setCurrentCity }) => {
     const [chosenCity] = useState(city);
 
-    const [cityTime, setCurrentTime] = useState(new Date());
+    const [cityTime, setCurrentTime] = useState(new Date(city.dt * 1000));
 
     useEffect(() => {
-        let timer = setInterval(() => setCurrentTime(new Date(city.dt)), 1000);
+        let timer = setInterval(() => {
+            let time = new Date(cityTime);
+            time.setMinutes(cityTime.getMinutes() + 1);
+
+            setCurrentTime(new Date(time));
+        }, 1000);
 
         return () => {
             clearInterval(timer);
         }
-    })
+    }, [])
 
     const changeCurrentCity = () => {
         setCurrentCity({isLoading: false, value: chosenCity});

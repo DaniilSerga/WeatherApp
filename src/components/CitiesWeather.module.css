@@ -3,13 +3,17 @@
     width: 30%;
     height: 100%;
     padding: 25px 0;
+    margin-bottom: 100px;
     bottom: 0;
     right: 0;
     top: 0;
     background: rgba(0, 149, 255, 0.411);
     backdrop-filter: blur(7px);
     overflow: hidden;
-    margin-bottom: 100px;
+}
+
+.closeModalSection {
+    display: none;
 }
 
 .searchSection {
@@ -44,11 +48,11 @@
     display: flex;
     width: 100%;
     max-height: 100%;
-    height: fit-content;
-    margin-bottom: 25px;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 25px;
     flex-direction: column;
     gap: 20px;
-    margin-top: 30px;
     overflow-y: scroll;
 }
 
@@ -57,12 +61,55 @@
 }
 
 .citiesSection::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 15px;
 }
 
 .citiesSection::-webkit-scrollbar-thumb {
     border-radius: 15px;
-    background-color: rgba(180, 180, 180, 0.7);
+    background-color: rgba(126, 126, 126, 0.7);
+}
+
+@media (max-width: 1100px) {
+    .searchSection {
+        margin-top: 40px;
+    }
+
+    .citiesWeather {
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .citiesSection {
+        margin-top: 30px;
+        padding-top: 0;
+        padding-bottom: 110px;
+        overflow: auto;
+    }
+
+    .closeModalSection {
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        padding: 15px;
+    }
+
+    .closeButton {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: transparent;
+        overflow: hidden;
+    }
+
+    .closeButton > img {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+    }
 }

@@ -1,12 +1,10 @@
 .hourlyContainer {
     display: flex;
-    min-width: 600px;
     flex-direction: column;
     padding: 10px 10px;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(148px);
-    overflow: auto;
 }
 
 .sectionHeader {
@@ -25,5 +23,19 @@
 .sectionBody {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    overflow-x: auto;
+}
+
+.sectionBody::-webkit-scrollbar {
+    height: 5px;               /* ширина scrollbar */
+}
+
+.sectionBody::-webkit-scrollbar-track {
+    border-radius: 15px;
+    background: rgba(136, 136, 136, 0.3);
+}
+
+.sectionBody::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background: rgba(104, 104, 104, 0.8);
 }

@@ -16,6 +16,7 @@
     letter-spacing: 0.4px;
     font-weight: 500;
     opacity: 0.3;
+    overflow: hidden;
 }
 
 .temperature {

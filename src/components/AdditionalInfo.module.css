@@ -24,3 +24,7 @@
     backdrop-filter: blur(148px);
     overflow: hidden;
 }
+
+.additionalData > div > * {
+    overflow: hidden;
+}
