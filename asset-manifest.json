@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/WeatherApp/static/css/main.3ff7fca5.css",
-    "main.js": "/WeatherApp/static/js/main.1627a547.js",
+    "main.css": "/WeatherApp/static/css/main.472f6029.css",
+    "main.js": "/WeatherApp/static/js/main.9179d5ea.js",
     "static/media/wind.mp4": "/WeatherApp/static/media/wind.61af9e152e42459eb59d.mp4",
     "static/media/clouds.mp4": "/WeatherApp/static/media/clouds.e3d2df473b72c0fec6b1.mp4",
     "static/media/sunny.mp4": "/WeatherApp/static/media/sunny.d7a606588ebdf19fff02.mp4",
@@ -10,6 +10,7 @@
     "static/media/rain.mp4": "/WeatherApp/static/media/rain.3727638e43f2a1664b1c.mp4",
     "static/media/thunder.mp4": "/WeatherApp/static/media/thunder.70d76bf271bb3fd0769a.mp4",
     "static/media/compass.webp": "/WeatherApp/static/media/compass.266dcffb3de8b0956c86.webp",
+    "static/media/menu.webp": "/WeatherApp/static/media/menu.eaa13ff7eedd9f77aefe.webp",
     "static/media/sunriseGraph.webp": "/WeatherApp/static/media/sunriseGraph.cab79c79afb8525f783d.webp",
     "index.html": "/WeatherApp/index.html",
     "static/media/visibilityIcon.webp": "/WeatherApp/static/media/visibilityIcon.73a89df3c04947220b35.webp",
@@ -21,11 +22,11 @@
     "static/media/uviIcon.webp": "/WeatherApp/static/media/uviIcon.54807361a869b8ec0bd8.webp",
     "static/media/checkMark.webp": "/WeatherApp/static/media/checkMark.998b36b48a9694078df5.webp",
     "static/media/feelsLikeIcon.webp": "/WeatherApp/static/media/feelsLikeIcon.9fc9216d84eba55c2327.webp",
-    "main.3ff7fca5.css.map": "/WeatherApp/static/css/main.3ff7fca5.css.map",
-    "main.1627a547.js.map": "/WeatherApp/static/js/main.1627a547.js.map"
+    "main.472f6029.css.map": "/WeatherApp/static/css/main.472f6029.css.map",
+    "main.9179d5ea.js.map": "/WeatherApp/static/js/main.9179d5ea.js.map"
   },
   "entrypoints": [
-    "static/css/main.3ff7fca5.css",
-    "static/js/main.1627a547.js"
+    "static/css/main.472f6029.css",
+    "static/js/main.9179d5ea.js"
   ]
 }
