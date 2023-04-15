@@ -52,9 +52,6 @@
 .extremeTemp {
     display: flex;
     align-items: center;
-    margin-left: 100px;
-    top: 0;
-    right: 0;
     font-size: 22px;
     justify-content: right;
     text-align: right;

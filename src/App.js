@@ -14,16 +14,13 @@ function App() {
         isLoading: false,
         value: null,
     });
-
     const [forecast, setForecast] = useState({
         isLoading: false,
         data: null,
     });
-
     const [modalActive, setModalActive] = useState(false);
     const [menuActive, setMenuActive] = useState(false);
-
-    
+    const [selectedCities, setSelectedCities] = useState(JSON.parse(localStorage.getItem('selectedCities')) || []);
     
     useEffect(() => {
         setWeather({isLoading: true});
@@ -63,8 +60,6 @@ function App() {
             });
         }
     }, [weather])
-
-    const [selectedCities, setSelectedCities] = useState(JSON.parse(localStorage.getItem('selectedCities')) || []);
 
     useEffect(() => {
         selectedCities.forEach(selectedCity => {
@@ -110,7 +105,7 @@ function App() {
             { menuActive &&
                 <div className={classes.menuCitiesSection}>
                     { !weather.isLoading && weather.value &&
-                        <CitiesWeather setMenuActive={setMenuActive} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather}/>
+                        <CitiesWeather setMenuActive={setMenuActive} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo}/>
                     }
                 </div>
             }

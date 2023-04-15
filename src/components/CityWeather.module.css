@@ -7,6 +7,14 @@
     border-radius: 15px;
 }
 
+/* TODO Complete hover action with displaying deletion button
+.cityWeather:hover {
+    display: none;
+    opacity: 0.2px;
+    transition: 0.5ms;
+} 
+*/
+
 .currentCityWeather {
     cursor: pointer;
     position: relative;
@@ -99,3 +107,4 @@
     width: 100%;
     height: 100%;
 }
+

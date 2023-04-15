@@ -39,12 +39,12 @@ const AdditionalInfo = ({currentWeather}) => {
             <HourlyWeather data={weather.value.hourly.slice(0, 10)}/>
 
             <div className={classes.additionalData}>
-                <UvIndexBlock data={weather.value.current.uvi}/>
-                <SunriseBlock data={weather.value.current.sunrise}/>
-                <WindBlock data={weather.value.current.wind_speed}/>
-                <FeelsLikeBlock data={weather.value.current.feels_like}/>
-                <HumidityBlock data={weather.value.current.humidity}/>
-                <VisibilityBlock data={weather.value.current.visibility}/>
+                    <UvIndexBlock data={weather.value.current.uvi}/>
+                    <SunriseBlock data={weather.value.current.sunrise}/>
+                    <WindBlock data={weather.value.current.wind_speed}/>
+                    <FeelsLikeBlock data={weather.value.current.feels_like}/>
+                    <HumidityBlock data={weather.value.current.humidity}/>
+                    <VisibilityBlock data={weather.value.current.visibility}/>
             </div>
         </div>
     );
