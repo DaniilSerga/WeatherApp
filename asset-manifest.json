@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/WeatherApp/static/css/main.123b155f.css",
-    "main.js": "/WeatherApp/static/js/main.be2eda20.js",
+    "main.css": "/WeatherApp/static/css/main.a0e7b297.css",
+    "main.js": "/WeatherApp/static/js/main.9ae790fa.js",
     "static/media/wind.mp4": "/WeatherApp/static/media/wind.61af9e152e42459eb59d.mp4",
-    "static/media/clouds.mp4": "/WeatherApp/static/media/clouds.e3d2df473b72c0fec6b1.mp4",
-    "static/media/sunny.mp4": "/WeatherApp/static/media/sunny.d7a606588ebdf19fff02.mp4",
     "static/media/snow.mp4": "/WeatherApp/static/media/snow.a9737741511a100c6687.mp4",
     "static/media/mist.mp4": "/WeatherApp/static/media/mist.70239ba9f32ce41a6234.mp4",
     "static/media/rain.mp4": "/WeatherApp/static/media/rain.3727638e43f2a1664b1c.mp4",
+    "static/media/clouds.mp4": "/WeatherApp/static/media/clouds.f0aa50e008cbb939e24c.mp4",
+    "static/media/sunny.mp4": "/WeatherApp/static/media/sunny.7d5ab2d4a873a575bfa1.mp4",
     "static/media/thunder.mp4": "/WeatherApp/static/media/thunder.70d76bf271bb3fd0769a.mp4",
     "static/media/compass.webp": "/WeatherApp/static/media/compass.266dcffb3de8b0956c86.webp",
     "static/media/menu.webp": "/WeatherApp/static/media/menu.eaa13ff7eedd9f77aefe.webp",
@@ -23,11 +23,11 @@
     "static/media/uviIcon.webp": "/WeatherApp/static/media/uviIcon.54807361a869b8ec0bd8.webp",
     "static/media/checkMark.webp": "/WeatherApp/static/media/checkMark.998b36b48a9694078df5.webp",
     "static/media/feelsLikeIcon.webp": "/WeatherApp/static/media/feelsLikeIcon.9fc9216d84eba55c2327.webp",
-    "main.123b155f.css.map": "/WeatherApp/static/css/main.123b155f.css.map",
-    "main.be2eda20.js.map": "/WeatherApp/static/js/main.be2eda20.js.map"
+    "main.a0e7b297.css.map": "/WeatherApp/static/css/main.a0e7b297.css.map",
+    "main.9ae790fa.js.map": "/WeatherApp/static/js/main.9ae790fa.js.map"
   },
   "entrypoints": [
-    "static/css/main.123b155f.css",
-    "static/js/main.be2eda20.js"
+    "static/css/main.a0e7b297.css",
+    "static/js/main.9ae790fa.js"
   ]
 }
