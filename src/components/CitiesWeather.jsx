@@ -4,7 +4,7 @@ import loupe from '../assets/icons/loupe.webp'
 import CityWeather from "./CityWeather";
 import closeIcon from '../assets/icons/close.webp';
 
-const CitiesWeather = ({setMenuActive, setModalActive, citiesWeather, currentCity, setCurrentCity, cityItemClass}) => {
+const CitiesWeather = ({removeCityItem, setMenuActive, setModalActive, citiesWeather, currentCity, setCurrentCity, cityItemClass}) => {
     return(
         <div className={classes.citiesWeather}>
             <div className={classes.closeModalSection}>
@@ -22,7 +22,7 @@ const CitiesWeather = ({setMenuActive, setModalActive, citiesWeather, currentCit
                 { currentCity && <CityWeather isCurrentLocation={true} city={currentCity} setCurrentCity={setCurrentCity} cityBackgroundClass={cityItemClass}/> }
 
                 { citiesWeather && citiesWeather.map((city, index) => {
-                    return <CityWeather city={city} key={index} setCurrentCity={setCurrentCity} cityBackgroundClass={cityItemClass}/>
+                    return <CityWeather removeCityItem={removeCityItem} city={city} key={index} setCurrentCity={setCurrentCity} cityBackgroundClass={cityItemClass}/>
                 })}
             </div>
         </div>

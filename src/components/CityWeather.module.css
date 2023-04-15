@@ -1,19 +1,11 @@
 .cityWeather {
-    cursor: pointer;
     position: relative;
     width: auto;
     height: 200px;
     min-height: 200px;
     border-radius: 15px;
+    overflow: hidden;
 }
-
-/* TODO Complete hover action with displaying deletion button
-.cityWeather:hover {
-    display: none;
-    opacity: 0.2px;
-    transition: 0.5ms;
-} 
-*/
 
 .currentCityWeather {
     cursor: pointer;
@@ -24,6 +16,55 @@
     border-radius: 15px;
 }
 
+.cityWeather:hover .deleteItemContainer {
+    cursor: default;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    width: fit-content;
+    padding: 15px 0;
+    background-color: rgba(80, 80, 80, 0.6);
+    opacity: 0;
+    animation: ani 0.4s forwards;
+}
+
+@keyframes ani {
+    0% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.deleteItemContainer {
+    display: none;
+}
+
+.deleteItemContainer > div {
+    cursor: pointer;
+    width: 100%;
+    padding: 0 5px;
+    overflow: hidden;
+}
+
+.deleteItemContainer > div > img {
+    width: 25px;
+    height: 25px;
+}
+
+.deleteItemContainer > div:hover > img {
+    transform: scale(0.8);
+    transition: 0.3s;
+}
+
 .cityWeatherContainer {
     position: inherit;
     display: flex;
@@ -31,6 +72,7 @@
     height: 100%;
     padding: 25px 20px 15px 20px;
     color: #fff;
+    overflow: hidden;
 }
 
 .cityInfoSection {

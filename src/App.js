@@ -68,8 +68,20 @@ function App() {
                 lat: selectedCity.coord.lat
             });
         });
+        
         localStorage.setItem('selectedCities', JSON.stringify(selectedCities));
     }, [selectedCities]);
+
+    const removeCityItem = (cityItem) => {
+        const updatedCitiesList = [];
+        selectedCities.forEach(city => {
+            if (cityItem !== city) {
+                updatedCitiesList.push(city);
+            }
+        });
+
+        setSelectedCities(updatedCitiesList);
+    }
 
     return (
         <div className={classes.app}>
@@ -112,7 +124,7 @@ function App() {
 
             <div className={classes.citiesSection}>
                 { !weather.isLoading && weather.value &&
-                    <CitiesWeather setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo}/>
+                    <CitiesWeather removeCityItem={removeCityItem} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo}/>
                 }
             </div>
 

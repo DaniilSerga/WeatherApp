@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import classes from './CityWeather.module.css';
 import Background from "./Background";
+import closeIcon from '../assets/icons/close.webp'
+import approveIcon from '../assets/icons/approveMark.webp';
 
-const CityWeather = ({ isCurrentLocation, city, setCurrentCity, cityBackgroundClass }) => {
+const CityWeather = ({ removeCityItem, isCurrentLocation, city, setCurrentCity, cityBackgroundClass }) => {
     const [chosenCity] = useState(city);
 
     const [cityTime, setCurrentTime] = useState(new Date(city.dt * 1000));
@@ -25,7 +27,8 @@ const CityWeather = ({ isCurrentLocation, city, setCurrentCity, cityBackgroundCl
     }
 
     return (
-        <div className={isCurrentLocation ? classes.currentCityWeather : classes.cityWeather} onClick={() => changeCurrentCity()}>
+        <div className={isCurrentLocation ? classes.currentCityWeather : classes.cityWeather}
+            onClick={isCurrentLocation && (() => changeCurrentCity())}>
             { chosenCity &&
                 <Background data={chosenCity} styleClass={cityBackgroundClass}/>
             }
@@ -42,6 +45,15 @@ const CityWeather = ({ isCurrentLocation, city, setCurrentCity, cityBackgroundCl
                     <div className={classes.extremeTemps}>
                         <p>H:{Math.round(chosenCity.main.temp_max)}</p>
                         <p>L:{Math.round(chosenCity.main.temp_min)}</p>
+                    </div>
+                </div>
+
+                <div className={classes.deleteItemContainer}>
+                    <div className={classes.deleteButtonSection} onClick={() => removeCityItem(city)}>
+                        <img src={closeIcon} alt='delete selected city'/>
+                    </div>
+                    <div className={classes.selectButtonSection} onClick={() => changeCurrentCity()}>
+                        <img src={approveIcon} alt='select city'/>
                     </div>
                 </div>
             </div>
