@@ -1,6 +1,6 @@
 .additionalDataContainer {
     position: relative;
-    display: grid;
+    display: flex;
     justify-content: flex-start;
     flex-direction: column;
     width: auto;

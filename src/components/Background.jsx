@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
-import backgrounds from '../constants/video-backgrounds';
+import getBackground from '../constants/video-backgrounds';
 
 const Background = ({data, styleClass}) => {
     const displayedVideo = useMemo(() => 
-        backgrounds.find(video => data.weather[0].main.toLowerCase().includes(video.definition))
+        getBackground(data)
     , [data])
 
     return(

@@ -10,4 +10,8 @@ const BACKGROUNDS = [
     { definition: 'mist', video: require('../assets/videos/mist.mp4') },
 ];
 
-export default BACKGROUNDS;
+const getBackground = (data) => {
+    return BACKGROUNDS.find(video => data.weather[0].main.toLowerCase().includes(video.definition))
+}
+
+export default getBackground;

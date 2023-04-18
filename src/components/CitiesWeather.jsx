@@ -19,10 +19,10 @@ const CitiesWeather = ({ ...props }) => {
                 </button>
             </div>
             <div className={classes.citiesSection}>
-                { props.currentCity && <CityWeather isCurrentLocation={true} city={props.currentCity} setCurrentCity={props.setCurrentCity} cityBackgroundClass={props.cityItemClass}/> }
+                { props.currentCity && <CityWeather isCurrentLocation={true} currentCity={props.currentCity} setCurrentCity={props.setChosenCity} cityBackgroundClass={props.cityItemClass}/> }
                 
                 { props.citiesWeather && props.citiesWeather.map((city, index) => {
-                    return <CityWeather selectedCities={props.selectedCities} setSelectedCities={props.setSelectedCities} removeCityItem={props.removeCityItem} city={city} key={index} setCurrentCity={props.setCurrentCity} cityBackgroundClass={props.cityItemClass}/>
+                    return <CityWeather selectedCities={props.selectedCities} setSelectedCities={props.setSelectedCities} removeCityItem={props.removeCityItem} city={city} key={index} setCurrentCity={props.setChosenCity} cityBackgroundClass={props.cityItemClass}/>
                 })}
             </div>
         </div>

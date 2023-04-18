@@ -106,7 +106,7 @@ const fetchCitiesNames = async (input) => {
         return [];
     }
 
-    return fetch(`https://api.api-ninjas.com/v1/city?limit=10&name=${input}`, {
+    return fetch(`https://api.api-ninjas.com/v1/geocoding?limit=10&city=${input}`, {
             method: 'GET',
             headers: { 'X-Api-Key': keys.ninjas},
             contentType: 'application/json',

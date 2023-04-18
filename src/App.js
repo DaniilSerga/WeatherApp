@@ -10,6 +10,10 @@ import service from './services/openWeather';
 import menuIcon from './assets/icons/menu.webp'
 
 function App() {
+    const [currentCityWeather, setCurrentCityWeather] = useState({
+        isLoading: false,
+        value: null,
+    });
     const [weather, setWeather] = useState({
         isLoading: false,
         value: null,
@@ -24,8 +28,10 @@ function App() {
     
     useEffect(() => {
         setWeather({ isLoading: true });
+        setCurrentCityWeather({ isLoading: true });
         service.getCurrentWeather().then(res => {
             setWeather({ isLoading: false, value: res });
+            setCurrentCityWeather({ isLoading: false, value: res });
         });
 
         setForecast({ isLoading: true });
@@ -110,7 +116,17 @@ function App() {
 
             <div className={classes.citiesSection}>
                 {!weather.isLoading && weather.value &&
-                    <CitiesWeather removeCityItem={removeCityItem} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo} setSelectedCities={setSelectedCities} selectedCities={selectedCities}/>
+                    <CitiesWeather 
+                        removeCityItem={removeCityItem} 
+                        setModalActive={setModalActive} 
+                        citiesWeather={selectedCities} 
+                        chosenCity={weather.value} 
+                        setChosenCity={setWeather} 
+                        currentCity={currentCityWeather.value}
+                        cityItemClass={classes.cityBackgroundVideo} 
+                        setSelectedCities={setSelectedCities} 
+                        selectedCities={selectedCities}
+                    />
                 }
             </div>
 

@@ -5,7 +5,7 @@ import loupeImg from '../assets/icons/loupe.webp';
 import CityItem from "./SearchedCityItem";
 import service from '../services/openWeather';
 
-const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
+const Modal = ({setModalActive, setSelectedCities}) => {
     const [cities, setCities] = useState({
         isLoading: false,
         data: [],
