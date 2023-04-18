@@ -109,7 +109,18 @@ function App() {
             { menuActive &&
                 <div className={classes.menuCitiesSection}>
                     {!weather.isLoading && weather.value &&
-                        <CitiesWeather setMenuActive={setMenuActive} removeCityItem={removeCityItem} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo} setSelectedCities={setSelectedCities} selectedCities={selectedCities}/>
+                        <CitiesWeather 
+                            setMenuActive={setMenuActive} 
+                            removeCityItem={removeCityItem} 
+                            setModalActive={setModalActive} 
+                            citiesWeather={selectedCities} 
+                            chosenCity={weather.value} 
+                            setChosenCity={setWeather} 
+                            currentCity={currentCityWeather.value}
+                            cityItemClass={classes.cityBackgroundVideo} 
+                            setSelectedCities={setSelectedCities} 
+                            selectedCities={selectedCities}
+                        />
                     }
                 </div>
             }
