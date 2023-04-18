@@ -2,7 +2,6 @@ import keys from './secrets';
 
 const service = {
     getCurrentWeather: async () => {
-        console.log('got current weather')
         const coords = await getCoords();
         return await fetchCurrentWeather(coords);
     },
@@ -12,19 +11,29 @@ const service = {
     getAdditionalCurrentWeather: async (coords) => {
         return await fetchAdditinalCurrentWeather(coords);
     },
-    getForecast: async() => {
+    getForecast: async () => {
         const coords = await getCoords();
         return await fetchForecast(coords);
     },
-    getForecastByCoords: async(coords) => {
+    getForecastByCoords: async (coords) => {
         return await fetchForecast(coords);
     },
-    getCitiesNames: async(input) => {
+    getCitiesNames: async (input) => {
         if (!input) {
             return [];
         }
 
         return await fetchCitiesNames(input);
+    },
+    updateCitiesWeather: async (input) => {
+        let promises = input.map(city => {
+            return service.getCurrentWeatherByCityCoords({
+                lon: city.coord.lon,
+                lat: city.coord.lat
+            })
+        })
+
+        return Promise.all(promises);
     }
 }
 
@@ -33,7 +42,13 @@ const fetchCurrentWeather = async (coords) => {
         .then(response => {
             return response.json();
         }).then(data => {
-            return data;
+            return getCurrentTime({
+                lon: data.coord.lon,
+                lat: data.coord.lat
+            }).then(res => {
+                data.dt = res;
+                return data;
+            });
         }).catch(err => {
             console.log(err);
             return null;
@@ -107,6 +122,15 @@ const fetchCitiesNames = async (input) => {
             console.error(err);
             return err;
         });
+}
+
+const getCurrentTime = (coords) => {
+    return fetch(`https://api.ipgeolocation.io/timezone?apiKey=${keys.ipgeolocation}&lat=${coords.lat}&long=${coords.lon}`)
+        .then(res => {
+            return res.json();
+        }).then(res => {
+            return res.date_time;
+        })
 }
 
 const getCoords = async () => {

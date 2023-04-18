@@ -5,22 +5,27 @@ import closeIcon from '../assets/icons/close.webp'
 import approveIcon from '../assets/icons/approveMark.webp';
 
 const CityWeather = ({ removeCityItem, isCurrentLocation, city, setCurrentCity, cityBackgroundClass }) => {
-    const [chosenCity] = useState(city);
+    const [chosenCity, setChosenCity] = useState(city);
 
-    const [cityTime, setCurrentTime] = useState(new Date(city.dt * 1000));
+    const [cityTime, setCurrentTime] = useState(new Date(city.dt));
 
     useEffect(() => {
-        let timer = setInterval(() => {
-            let time = new Date(cityTime);
-            time.setMinutes(cityTime.getMinutes() + 1);
+        setChosenCity(city);
+    }, [city])
 
-            setCurrentTime(new Date(time));
-        }, 1000);
-
-        return () => {
-            clearInterval(timer);
+    useEffect(() => {
+        if (!isCurrentLocation) {
+            let timer = setInterval(() => {
+                setCurrentTime(
+                    new Date(cityTime.setSeconds(cityTime.getSeconds() + 1))
+                );
+            }, 1000);
+    
+            return () => {
+                clearInterval(timer);
+            }
         }
-    }, [])
+    }, []);
 
     const changeCurrentCity = () => {
         setCurrentCity({isLoading: false, value: chosenCity});
@@ -34,8 +39,8 @@ const CityWeather = ({ removeCityItem, isCurrentLocation, city, setCurrentCity, 
             }
             <div className={classes.cityWeatherContainer}>
                 <div className={classes.cityInfoSection}>
-                    <h3 className={classes.locationHeader}>{isCurrentLocation ? 'My location' : chosenCity.name}</h3>
-                    <h4 className={classes.locationSubHeader}>{isCurrentLocation ? chosenCity.name : cityTime.toLocaleTimeString('ru', {hour: '2-digit', minute: '2-digit'})}</h4>
+                    <h3 className={classes.locationHeader}>{isCurrentLocation ? 'My location' : city.name}</h3>
+                    <h4 className={classes.locationSubHeader}>{isCurrentLocation ? city.name : cityTime.toLocaleTimeString('ru', {hour: '2-digit', minute: '2-digit'})}</h4>
 
                     <p className={classes.weatherOverview}>{chosenCity.weather[0].main}</p>
                 </div>

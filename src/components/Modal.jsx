@@ -22,7 +22,7 @@ const Modal = ({setModalActive, selectedCities, setSelectedCities}) => {
         }).then(res => {
             setSelectedCities((prevCities) => [
                 ...prevCities, res
-            ]);
+            ].flat(1));
         })
 
         setModalActive(false);

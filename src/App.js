@@ -23,32 +23,30 @@ function App() {
     const [selectedCities, setSelectedCities] = useState(JSON.parse(localStorage.getItem('selectedCities')) || []);
     
     useEffect(() => {
-        setWeather({isLoading: true});
+        setWeather({ isLoading: true });
         service.getCurrentWeather().then(res => {
-            setWeather({isLoading: false, value: res});
+            setWeather({ isLoading: false, value: res });
         });
 
-        setForecast({isLoading: true});
+        setForecast({ isLoading: true });
         service.getForecast().then(res => {
-            setForecast({isLoading: false, data: res});
+            setForecast({ isLoading: false, data: res });
         });
 
-        const selectedCitiesFromJson = JSON.parse(localStorage.getItem('selectedCities'));
-        // axious
-        if (selectedCitiesFromJson) {
-            selectedCitiesFromJson.forEach(city => {
-                city = service.getCurrentWeatherByCityCoords({
-                    lon: city.coord.lon,
-                    lat: city.coord.lat
-                });
-            })
-            setSelectedCities(selectedCitiesFromJson);
+        let arr = [];
+
+        if (selectedCities) {
+            service.updateCitiesWeather(selectedCities).then(res => {
+                arr = [...arr, res].flat(1);
+            }).then(() => {
+                setSelectedCities(arr);
+            });
         }
     }, [])
 
     useEffect(() => {
         if (weather && weather.value) {
-            setForecast({isLoading: true});
+            setForecast({ isLoading: true });
             service.getForecastByCoords({
                 lat: weather.value.coord.lat,
                 lon: weather.value.coord.lon,
@@ -62,47 +60,35 @@ function App() {
     }, [weather])
 
     useEffect(() => {
-        selectedCities.forEach(selectedCity => {
-            selectedCity = service.getCurrentWeatherByCityCoords({
-                lon: selectedCity.coord.lon,
-                lat: selectedCity.coord.lat
-            });
-        });
-        
         localStorage.setItem('selectedCities', JSON.stringify(selectedCities));
     }, [selectedCities]);
 
     const removeCityItem = (cityItem) => {
-        const updatedCitiesList = [];
-        selectedCities.forEach(city => {
-            if (cityItem !== city) {
-                updatedCitiesList.push(city);
-            }
-        });
-
-        setSelectedCities(updatedCitiesList);
+        setSelectedCities(
+            selectedCities.filter(city => city.id !== cityItem.id)
+        );
     }
 
     return (
         <div className={classes.app}>
-            { !weather.isLoading && weather.value && 
+            {!weather.isLoading && weather.value &&
                 <div className={classes.videoContainer}>
-                    <Background data={weather.value} styleClass={classes.backgroundVideo}/>
+                    <Background data={weather.value} styleClass={classes.backgroundVideo} />
                 </div>
             }
-            
+
             <div className={classes.header}>
-                { !weather.isLoading && weather.value && 
-                    <Header value={weather.value}/>
+                {!weather.isLoading && weather.value &&
+                    <Header value={weather.value} />
                 }
             </div>
-            
+
             <div className={classes.infoSection}>
-                { !forecast.isLoading && forecast.data && !weather.isLoading && weather.value &&
+                {!forecast.isLoading && forecast.data && !weather.isLoading && weather.value &&
                     <div className={classes.weatherInfo}>
-                        <ForecastList data={forecast.data}/>
+                        <ForecastList data={forecast.data} />
                         <div className={classes.additionalInfo}>
-                            <AdditionalInfo currentWeather={weather.value}/>
+                            <AdditionalInfo currentWeather={weather.value} />
                         </div>
                     </div>
                 }
@@ -116,20 +102,20 @@ function App() {
 
             { menuActive &&
                 <div className={classes.menuCitiesSection}>
-                    { !weather.isLoading && weather.value &&
-                        <CitiesWeather setMenuActive={setMenuActive} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo}/>
+                    {!weather.isLoading && weather.value &&
+                        <CitiesWeather setMenuActive={setMenuActive} removeCityItem={removeCityItem} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo} setSelectedCities={setSelectedCities} selectedCities={selectedCities}/>
                     }
                 </div>
             }
 
             <div className={classes.citiesSection}>
-                { !weather.isLoading && weather.value &&
-                    <CitiesWeather removeCityItem={removeCityItem} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo}/>
+                {!weather.isLoading && weather.value &&
+                    <CitiesWeather removeCityItem={removeCityItem} setModalActive={setModalActive} citiesWeather={selectedCities} currentCity={weather.value} setCurrentCity={setWeather} cityItemClass={classes.cityBackgroundVideo} setSelectedCities={setSelectedCities} selectedCities={selectedCities}/>
                 }
             </div>
 
-            { modalActive && 
-                <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities}/> 
+            {modalActive &&
+                <Modal setModalActive={setModalActive} selectedCities={selectedCities} setSelectedCities={setSelectedCities} />
             }
         </div>
     );
