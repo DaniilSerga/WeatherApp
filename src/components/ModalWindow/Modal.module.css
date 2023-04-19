@@ -1,0 +1,155 @@
+.modalContainer {
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(78, 112, 123, 0.42);
+    backdrop-filter: blur(8px);
+}
+
+.modalWindow {
+    position: absolute;
+    width: 621px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    padding: 8px 16px;
+    transform: translate(-50%, -50%);
+}
+
+.modalForm {
+    margin: 0 20px;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+}
+
+.submitContainer {
+    z-index: 2;
+    width: 100%;
+    height: 40px;
+    margin-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.submitButton {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    color: #fff;
+    background-color: #3AA9FF;
+    border-width: 0;
+    border-radius: 31px;
+}
+
+.submitButton:disabled {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    color: white;
+    background-color: #ABBFCE;
+    border-width: 0;
+    border-radius: 31px;
+}
+
+.closeModalContainer {
+    width: 100%;
+    margin: 8px 0;
+}
+
+.closeModal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    color: #000;
+    background: none;
+    border: none;
+}
+
+.modalHeader {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    padding-left: 10px;
+    align-items: center;
+    padding: 14px 18px 11px 18px;
+    background-color: #F3F3F3;
+}
+
+.modalHeader > input {
+    height: 100%;
+    width: 100%;
+    margin-left: 11px;
+    color: rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.3px;
+    font-size: 17px;
+    line-height: 40px;
+    border: none;
+    background-color: transparent;
+}
+
+.modalHeader > input:focus {
+    outline: none;
+}
+
+.modalHeader > img {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+}
+
+.formContainer {
+    padding: 0;
+    max-height: 289px;
+    overflow: auto;
+}
+
+.formContainer > ul {
+    margin-top: 9px;
+}
+
+.formContainer > ul > li {
+    position: relative;
+    padding: 8px 16px;
+}
+
+
+.dataContainer {
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(84, 84, 88, 0.65);
+}
+
+.checked > .dataContainer::after {
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    top: 0;
+    right: 0;
+    margin: 24px 16px;
+    content: url("../../assets/icons/checkMark.webp");
+} 
+
+.formContainer > ul > li:hover {
+    background-color: #e4e4e4;
+    transition: 0.3ms;
+}
+
+.formContainer > p {
+    margin: 10px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+
+.dataContainer > p {
+    color: rgba(60, 60, 67, 0.6);
+}

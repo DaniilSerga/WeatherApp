@@ -1,0 +1,35 @@
+.additionalDataContainer {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: auto;
+    gap: 50px;
+}
+
+.additionalData {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+    column-gap: 15px;
+    justify-content: center;
+    row-gap: 50px;
+}
+
+.additionalData > div {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(148px);
+    overflow: hidden;
+}
+
+@media screen and (max-width: 730px) {
+    .additionalData {
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 200px);
+        row-gap: 15px;
+    }
+}

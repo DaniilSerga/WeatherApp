@@ -1,0 +1,115 @@
+.citiesWeather {
+    position: fixed;
+    width: 30%;
+    height: 100%;
+    padding: 25px 0;
+    margin-bottom: 100px;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 149, 255, 0.411);
+    backdrop-filter: blur(7px);
+    overflow: hidden;
+}
+
+.closeModalSection {
+    display: none;
+}
+
+.searchSection {
+    padding: 0 20px;
+}
+
+.searchBar {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 44px;
+    gap: 10px;
+    align-items: center;
+    text-align: left;
+    background-color: #fff;
+    border-width: 0;
+    border-radius: 47px;
+}
+
+.searchBar > p {
+    font-size: 17px;
+}
+
+.searchBar > img {
+    height: 17px;
+    width: 17px;
+    margin-left: 18px;
+}
+
+.citiesSection {
+    display: flex;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: scroll;
+}
+
+.citiesSection > div {
+    margin: 0 20px;
+}
+
+.citiesSection::-webkit-scrollbar {
+    width: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.citiesSection::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: rgba(126, 126, 126, 0.7);
+}
+
+@media (max-width: 1024px) {
+    .searchSection {
+        margin-top: 40px;
+    }
+
+    .citiesWeather {
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+
+    .citiesSection {
+        margin-top: 30px;
+        padding-top: 0;
+        padding-bottom: 110px;
+        overflow: auto;
+    }
+
+    .closeModalSection {
+        position: absolute;
+        display: block;
+        top: 0;
+        right: 0;
+        padding: 15px;
+    }
+
+    .closeButton {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background-color: transparent;
+        overflow: hidden;
+    }
+
+    .closeButton > img {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+    }
+}

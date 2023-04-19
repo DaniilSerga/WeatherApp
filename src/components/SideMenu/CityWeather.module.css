@@ -1,0 +1,199 @@
+.cityWeather {
+    position: relative;
+    width: auto;
+    height: 200px;
+    min-height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.currentCityWeather {
+    cursor: pointer;
+    position: relative;
+    width: auto;
+    height: 200px;
+    min-height: 200px;
+    border-radius: 15px;
+    animation: zoomOut 0.3s forwards;
+}
+
+.currentCityWeather:hover {
+    animation: zoomIn 0.3s forwards;
+}
+
+.currentCityWeather > .cityWeatherContainer > .deleteItemContainer {
+    display: none;
+}
+
+.deleteItemContainer {
+    cursor: default;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: fit-content;
+    background-color: rgba(80, 80, 80, 0.6);
+    opacity: 1;
+    animation: disappear 0.3s forwards;
+}
+
+.cityWeather:hover .deleteItemContainer {
+    opacity: 0;
+    animation: appear 0.3s forwards;
+}
+
+@keyframes zoomIn {
+    0% {
+        margin: 0 20px;
+    }
+    100% {
+        margin: 0 30px;
+    }
+}
+@keyframes zoomOut {
+    0% {
+        margin: 0 30px;
+    }
+    100% {
+        margin: 0 20px;
+    }
+}
+@keyframes appear {
+    0% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+}
+
+.deleteItemContainer > div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    padding: 0 5px;
+    overflow: hidden;
+}
+
+.deleteItemContainer > div > img {
+    width: 25px;
+    height: 25px;
+}
+
+.deleteItemContainer > div:hover > img {
+    transform: scale(0.8);
+    transition: 0.1s;
+}
+
+.deleteItemContainer > div:hover {
+    transition: 0.1s;
+    background-color: rgba(71, 71, 71, 0.5);
+}
+
+.deleteButtonSection {
+    border-bottom: 2px solid #00000063;
+}
+
+.cityWeatherContainer {
+    position: inherit;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 25px 20px 15px 20px;
+    color: #fff;
+    overflow: hidden;
+}
+
+.cityInfoSection {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 70%;
+}
+
+.locationHeader {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.4px;
+    overflow: hidden;
+}
+
+.locationSubHeader {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 28px;
+    letter-spacing: 0.36px;
+    overflow: hidden;
+}
+
+.weatherOverview {
+    position: absolute;
+    bottom: 0;
+}
+
+.weatherInfoSection {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.weatherInfoSection p::after {
+    content: '°';
+    padding: 0;
+}
+
+.temperature {
+    font-weight: 500;
+    font-size: 110px;
+    line-height: 131px;
+    letter-spacing: 0.4px;
+    overflow: hidden;
+}
+
+.extremeTemps {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.extremeTemps > p {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+.cityBackgroundVideo {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+

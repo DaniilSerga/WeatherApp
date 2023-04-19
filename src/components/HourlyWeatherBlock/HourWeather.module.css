@@ -1,0 +1,32 @@
+.weather {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10%;
+    min-width: 60px;
+}
+
+.weatherTime {
+    color: #373C42;
+    font-size: 17px;
+    text-align: center;
+    align-items: center;
+}
+
+.weatherIcon {
+    width: 35px;
+    height: 35px;
+    margin: 25px auto;
+}
+
+.temperature {
+    color: #373C42;
+    font-size: 22px;
+    letter-spacing: 0.005em;
+    text-align: center;
+}
+
+.temperature::after {
+    content: '°';
+}

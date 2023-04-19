@@ -1,0 +1,42 @@
+.hourlyContainer {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 10px 10px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(148px);
+}
+
+.sectionHeader {
+    padding: 8px 8px 0 8px;
+    margin-bottom: 8px;
+    border-bottom: 0.2px solid rgba(55, 60, 66, 0.1)
+}
+
+.weatherSummary {
+    color: #373C42;
+    font-size: 18px;
+    line-height: 21px;
+    overflow: hidden;
+}
+
+.sectionBody {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+.sectionBody::-webkit-scrollbar {
+    height: 5px;               /* ширина scrollbar */
+}
+
+.sectionBody::-webkit-scrollbar-track {
+    border-radius: 15px;
+    background: rgba(136, 136, 136, 0.3);
+}
+
+.sectionBody::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background: rgba(104, 104, 104, 0.8);
+}
