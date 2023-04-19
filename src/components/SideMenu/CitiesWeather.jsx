@@ -1,8 +1,8 @@
 import React from "react";
 import classes from './CitiesWeather.module.css';
-import loupe from '../assets/icons/loupe.webp'
+import loupe from '../../assets/icons/loupe.webp'
 import CityWeather from "./CityWeather";
-import closeIcon from '../assets/icons/close.webp';
+import closeIcon from '../../assets/icons/close.webp';
 
 const CitiesWeather = ({ ...props }) => {
     return(

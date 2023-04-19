@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './HumidityBlock.module.css';
-import icon from '../assets/icons/humidityIcon.webp';
+import icon from '../../assets/icons/humidityIcon.webp';
 
 const Humidity = ({data}) => {
     return(

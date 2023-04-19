@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import classes from './UvIndexBlock.module.css';
-import icon from '../assets/icons/uviIcon.webp';
-import uvi from '../constants/uviExpanation';
+import icon from '../../assets/icons/uviIcon.webp';
+import uvi from '../../constants/uviExpanation';
 
 const UvIndex = ({data}) => {
     const uviExpanation = useMemo(() => uvi.getExpanation(data), [data]);

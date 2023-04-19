@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import service from '../services/openWeather';
 import classes from './AdditionalInfo.module.css';
-import FeelsLikeBlock from "./FeelsLikeBlock";
-import HourlyWeather from "./HourlyWeather";
-import HumidityBlock from "./HumidityBlock";
-import SunriseBlock from "./SunriseBlock";
-import UvIndexBlock from "./UvIndexBlock";
-import VisibilityBlock from "./VisibilityBlock";
-import WindBlock from "./WindBlock";
+import FeelsLikeBlock from "./InfoCards/FeelsLikeBlock";
+import HourlyWeather from "./HourlyWeatherBlock/HourlyWeather";
+import HumidityBlock from "./InfoCards/HumidityBlock";
+import SunriseBlock from "./InfoCards/SunriseBlock";
+import UvIndexBlock from "./InfoCards/UvIndexBlock";
+import VisibilityBlock from "./InfoCards/VisibilityBlock";
+import WindBlock from "./InfoCards/WindBlock";
 
 const AdditionalInfo = ({currentWeather}) => {
     const [weather, setWeather] = useState({

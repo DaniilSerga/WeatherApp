@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import classes from './Modal.module.css';
-import closeImg from '../assets/icons/close.webp';
-import loupeImg from '../assets/icons/loupe.webp';
+import closeImg from '../../assets/icons/close.webp';
+import loupeImg from '../../assets/icons/loupe.webp';
 import CityItem from "./SearchedCityItem";
-import service from '../services/openWeather';
+import service from '../../services/openWeather';
 
 const Modal = ({setModalActive, setSelectedCities}) => {
     const [cities, setCities] = useState({

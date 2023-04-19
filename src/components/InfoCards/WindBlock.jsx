@@ -1,7 +1,7 @@
 import React from "react";
 import classes from './WindBlock.module.css';
-import icon from '../assets/icons/wind.webp';
-import compass from '../assets/icons/compass.webp'
+import icon from '../../assets/icons/wind.webp';
+import compass from '../../assets/icons/compass.webp'
 
 const Wind = ({data}) => {
     return(

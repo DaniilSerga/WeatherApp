@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './VisibilityBlock.module.css';
-import icon from '../assets/icons/visibilityIcon.webp';
+import icon from '../../assets/icons/visibilityIcon.webp';
 
 const Visibility = ({data}) => {
     return (

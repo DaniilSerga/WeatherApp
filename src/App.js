@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import classes from './App.module.css';
 import Background from './components/Background';
-import CitiesWeather from './components/CitiesWeather';
-import ForecastList from './components/ForecastList';
+import CitiesWeather from './components/SideMenu/CitiesWeather';
+import ForecastList from './components/ForecastBlock/ForecastList';
 import Header from './components/Header';
-import Modal from './components/Modal';
+import Modal from './components/ModalWindow/Modal';
 import AdditionalInfo from './components/AdditionalInfo';
 import service from './services/openWeather';
 import menuIcon from './assets/icons/menu.webp'

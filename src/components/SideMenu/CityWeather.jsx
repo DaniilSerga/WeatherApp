@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import classes from './CityWeather.module.css';
-import Background from "./Background";
-import closeIcon from '../assets/icons/close.webp'
-import approveIcon from '../assets/icons/approveMark.webp';
+import Background from '../Background';
+import closeIcon from './../../assets/icons/close.webp';
+import approveIcon from './../../assets/icons/approveMark.webp';
 
 const CityWeather = ({ removeCityItem, isCurrentLocation, currentCity, city, setCurrentCity, cityBackgroundClass }) => {
     const displayedVideo = useMemo(() => {

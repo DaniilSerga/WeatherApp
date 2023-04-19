@@ -135,7 +135,7 @@
     top: 0;
     right: 0;
     margin: 24px 16px;
-    content: url("../assets/icons/checkMark.webp");
+    content: url("../../assets/icons/checkMark.webp");
 } 
 
 .formContainer > ul > li:hover {
